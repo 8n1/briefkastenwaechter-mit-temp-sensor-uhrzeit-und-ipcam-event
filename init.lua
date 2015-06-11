@@ -25,7 +25,7 @@ time_offset = 1
 cam_ip = "192.168.1.18"
 cam_port = "8001"
 event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"
-base64_pass = ""
+base64_pass = "am9oOmpvaA=="
 --------------------------------------
 
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
