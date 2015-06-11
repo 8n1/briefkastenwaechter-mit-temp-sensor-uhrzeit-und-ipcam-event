@@ -68,7 +68,9 @@ tmr.alarm(0, 1000, 1, function()
         print(" -> Temperature: " ..temperature.. "'C")
         print("~~~~~~~~~~~~~~~~~~~~~~~~~")
         
+        print(" Triggering IP Cam Event...")
         dofile("trigger_ipcam_event.lc")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
 
         -- Get time from webserver
         print(" Getting time...")
