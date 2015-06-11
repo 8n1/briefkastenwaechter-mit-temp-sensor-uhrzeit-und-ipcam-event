@@ -7,7 +7,7 @@ wifi.sta.connect()
 
 --------------------------------------
 -- Pushingbox device id
-devid = "v7EE5CC4E0D22FC4"
+devid = "xxxxx"
 --------------------------------------
 -- Temperatur Sensor pin (nodemcu I/O Index)
 tempsensor_pin = 4
@@ -19,11 +19,11 @@ precision = 1
 time_server_ip = "192.168.0.123"
 --------------------------------------
 -- Time offset
-time_offset = 2
+time_offset = 1
 --------------------------------------
 -- IP Cam config
-cam_ip = "192.168.0.123"
-cam_port = "80"
+cam_ip = "192.168.1.18"
+cam_port = "8001"
 event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"
 base64_pass = ""
 --------------------------------------
