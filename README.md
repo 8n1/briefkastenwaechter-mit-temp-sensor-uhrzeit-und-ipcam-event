@@ -32,6 +32,5 @@ Resourcen / Quellen:
 1. https://github.com/8n1/briefkastenwaechter
 2. http://benlo.com/esp8266/esp8266Projects.html (-> Ask Google for the Time)
 3. https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_en
-4. 
 
 Tags: ESP8266, NodeMCU, Lua, Pushingbox, Axis IP Cam, DeepSleep
