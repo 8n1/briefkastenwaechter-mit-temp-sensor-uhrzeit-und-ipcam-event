@@ -25,6 +25,7 @@ Ein schönes Beispielprojekt findet man hier:
 
 RasPiPo(st) 2 - Der Briefkasten verschickt E-Mails - http://www.forum-raspberrypi.de/Thread-hardware-automatisierung-raspipo-st-2-der-briefkasten-verschickt-e-mails?pid=159108#pid159108
 
+.:.
 
 Resourcen / Quellen:
 
@@ -32,6 +33,5 @@ Resourcen / Quellen:
 2. http://benlo.com/esp8266/esp8266Projects.html (-> Ask Google for the Time)
 3. https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_en
 4. 
-
 
 Tags: ESP8266, NodeMCU, Lua, Pushingbox, Axis IP Cam, DeepSleep
