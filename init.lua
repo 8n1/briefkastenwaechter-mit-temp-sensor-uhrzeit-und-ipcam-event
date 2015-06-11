@@ -49,9 +49,6 @@ end
 -- ignore first reading (it's old because it was taken before going to DeepSleep)
 getTemperature(tempsensor_pin)
 
--- Pushingbox api request
-dofile("trigger_scenario.lc")
-
 -- wait until we have an IP from the AP
 tmr.alarm(0, 1000, 1, function()
     print(" Checking IP...")
