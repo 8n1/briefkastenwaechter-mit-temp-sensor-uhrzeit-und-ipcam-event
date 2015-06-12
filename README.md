@@ -9,7 +9,7 @@ Hier handelt es sich um eine für das unten erwähnte Projekt erweiterte Version
 * Aktiviert ein Pushingbox Szenario und übergibt dabei Datum, Uhrzeit und Temperatur. Diese Werte können mit den Schlüsselworten $date$ , $time$ und $temperatur$ in die Nachricht(Message) die dann von Pushingbox an euch verschickt wird eingebaut werden.
 * Legt sich wieder schlafen (-> DeepSleep). Nach einem Reset wiederholt sich die ganze Prozedur. 
 
-Datum und Uhrzeit werden von einem beliebigen Webserver geholt, Die Temperatur kommmt von einem DS18B20.
+Datum und Uhrzeit werden von einem beliebigen Webserver geholt (Siehe Quelle 2), Die Temperatur kommmt von einem DS18B20.
 
 ## Geplante Erweiterungen:
 * Batterieüberwachung mittels internem ADC
@@ -26,7 +26,7 @@ Datum und Uhrzeit werden von einem beliebigen Webserver geholt, Die Temperatur k
 -> Anzahl der Nachkommastellen des Temperaturwertes.
 
 * **time_server_ip = "192.168.1.123"**
--> Der WebServer von dem die Zeit geholt wird. (Siehe Quelle 2)
+-> Der WebServer von dem die Zeit geholt wird.
 
 * **time_offset = 0**
 -> Die Anzahl der Stunden die dazugerechnet werden sollen falls die ermittelte Zeit von der tatsächlichen abweicht. 
