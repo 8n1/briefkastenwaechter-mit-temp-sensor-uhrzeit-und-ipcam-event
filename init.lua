@@ -21,7 +21,7 @@ time_server_ip = "192.168.1.123"
 -- Time offset
 time_offset = 1
 --------------------------------------
--- IP Cam config
+-- IP cam config
 cam_ip = "192.168.1.18"
 cam_port = "8001"
 event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"
@@ -30,7 +30,8 @@ base64_pass = "am9oOmpvaA=="
 
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(" NodeMCU Briefkastenwaechter     ")
-print(" mit Temp-Sensor und Uhrzeit     ")
+print(" mit Temp-Sensor,Uhrzeit und     ")
+print(" IP Cam Event                    ")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 -- Read temperature sensor
