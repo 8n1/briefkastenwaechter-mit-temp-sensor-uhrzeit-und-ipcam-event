@@ -14,10 +14,26 @@ Geplante Erweiterungen:
 * Batterieüberwachung
 
 Konfiguration:
-TODO
+
+*devid = "xxxxx"
+-> Hier muss die Pushingbox Device ID des Szenarios eingetragen werden das aktviert werden soll.
+
+*tempsensor_pin = 4
+-> Der Pin an dem der DS18B20 angeschlossen ist entsprechend dem NodeMCU I/O Index. Der I/O Index 4 entspricht GPIO2.
+
+*precision = 1
+-> Anzahl der Nachkommastellen des Temperaturwertes.
+
+*time_server = "google.com"
+-> Der Server von dem die Zeit geholt wird. (google_time.lua)
+
+*time_offset = 0
+-> Die Anzahl der Stunden die dazugerechnet werden sollen falls die ermittelte Zeit von der tatsächlichen abweicht. 
+
 
 Installation:
-TODO
+
+Die ganzen Lua Skripte auf dem ESP Modul speichern und alle bis auf die init.lua komplieren. 
 
 .:.
 
