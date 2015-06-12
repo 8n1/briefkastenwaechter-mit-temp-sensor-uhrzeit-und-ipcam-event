@@ -13,7 +13,7 @@ Datum und Uhrzeit werden von einem beliebigen Webserver geholt, Die Temperatur k
 ## Geplante Erweiterungen:
 * Batterieüberwachung
 
-Konfiguration:
+## Konfiguration:
 
 * devid = "xxxxx"
 -> Hier muss die Pushingbox Device ID des Szenarios eingetragen werden das aktviert werden soll.
