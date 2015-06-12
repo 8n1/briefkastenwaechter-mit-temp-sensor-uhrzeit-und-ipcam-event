@@ -16,7 +16,7 @@ tempsensor_pin = 4
 precision = 1
 --------------------------------------
 -- Server to get the time from (not NTP)
-time_server_ip = "192.168.0.123"
+time_server_ip = "192.168.1.123"
 --------------------------------------
 -- Time offset
 time_offset = 1
