@@ -5,7 +5,7 @@ Hier handelt es sich um eine für das unten erwähnte Projekt erweiterte Version
 
 ## Features / Ablauf:
 * Verbindet sich mit dem WLAN
-* Löst ein bestimmtes Event auf einer IP Cam aus. (Schickt z.B. ein Foto)
+* Löst ein bestimmtes Event auf einer Axis IP Cam aus. (Schickt z.B. ein Foto)
 * Aktiviert ein Pushingbox Szenario und übergibt dabei Datum, Uhrzeit und Temperatur. Diese Werte können mit den Schlüsselworten $date$ , $time$ und $temperatur$ in die Nachricht(Message) die dann von Pushingbox an euch verschickt wird eingebaut werden.
 * Legt sich wieder schlafen (-> DeepSleep). Nach einem Reset wiederholt sich die ganze Prozedur. 
 
@@ -33,7 +33,11 @@ Es müssen nur die folgenden Variablen in der init.lua angepasst werden.
 * **time_offset = 0**
 -> Die Anzahl der Stunden die dazugerechnet werden sollen falls die ermittelte Zeit von der tatsächlichen abweicht. 
 
-* TODO: ip cam konfig variablen
+**IP cam konfig**
+* **cam_ip = "192.168.1.18"** -> IP Addresse
+* **cam_port = "8001"** -> Port
+* **event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"** -> Event URL die aufgerufen werden soll
+* **base64_pass = "am9oOmpvaA=="** -> Die base64 codierten Zugangsdaten (benutzer:passwort) für die HTTP Basic Authentifizierung
 
 
 ## Installation:
