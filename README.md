@@ -12,7 +12,7 @@ Hier handelt es sich um eine für das unten erwähnte Projekt erweiterte Version
 Datum und Uhrzeit werden von einem beliebigen Webserver geholt, Die Temperatur kommmt von einem DS18B20.
 
 ## Geplante Erweiterungen:
-* Batterieüberwachung
+* Batterieüberwachung mittels internem ADC
 
 ## Konfiguration:
 
