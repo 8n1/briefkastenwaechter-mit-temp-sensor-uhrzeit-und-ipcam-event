@@ -37,7 +37,7 @@ Die ganzen Lua Skripte auf dem ESP Modul speichern und alle bis auf die init.lua
 
 .:.
 
-### Ein schönes Beispielprojekt findet man hier:
+### Das erwähnte Projekt findet man hier:
 
 RasPiPo(st) 2 - Der Briefkasten verschickt E-Mails - http://www.forum-raspberrypi.de/Thread-hardware-automatisierung-raspipo-st-2-der-briefkasten-verschickt-e-mails?pid=159108#pid159108
 
