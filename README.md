@@ -16,6 +16,8 @@ Datum und Uhrzeit werden von einem beliebigen Webserver geholt (Siehe Quelle 2),
 
 ## Konfiguration:
 
+Es müssen nur die folgenden Variablen in der init.lua angepasst werden. 
+
 * **devid = "xxxxx"**
 -> Hier muss die Pushingbox Device ID des Szenarios eingetragen werden das aktviert werden soll.
 
@@ -30,6 +32,8 @@ Datum und Uhrzeit werden von einem beliebigen Webserver geholt (Siehe Quelle 2),
 
 * **time_offset = 0**
 -> Die Anzahl der Stunden die dazugerechnet werden sollen falls die ermittelte Zeit von der tatsächlichen abweicht. 
+
+* TODO: ip cam konfig variablen
 
 
 ## Installation:
