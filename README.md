@@ -7,6 +7,7 @@ Hier handelt es sich um eine für das unten erwähnte Projekt erweiterte Version
 * Verbindet sich mit dem WLAN
 * Löst ein bestimmtes Event auf einer IP Cam aus. (Schickt z.B. ein Foto)
 * Aktiviert ein Pushingbox Szenario und übergibt dabei Datum, Uhrzeit und Temperatur. Diese Werte können mit den Schlüsselworten $date$ , $time$ und $temperatur$ in die Nachricht(Message) die dann von Pushingbox an euch verschickt wird eingebaut werden.
+* Legt sich wieder schlafen (-> DeepSleep). Nach einem Reset wiederholt sich die ganze Prozedur. 
 
 Datum und Uhrzeit werden von einem beliebigen Webserver geholt, Die Temperatur kommmt von einem DS18B20.
 
