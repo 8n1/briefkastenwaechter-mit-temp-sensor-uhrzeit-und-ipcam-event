@@ -1,7 +1,7 @@
 # briefkastenwaechter-mit-temp-sensor-uhrzeit-und-ipcam-event
-NodeMCU Briefkastenwaechter mit DS18B20 Temperatur Sensor, Uhrzeit und IP Cam Event trigger.
+NodeMCU Briefkastenwaechter mit DS18B20 Temperatur Sensor, Uhrzeit und IP Cam Event.
 
-Hier handelt es sich um eine für das unten erwähnte Projekt erweiterte Version des "einfachen" Briefkastenwächters: https://github.com/8n1/briefkastenwaechter
+Das hier ist eine erweiterte Version des "einfachen" Briefkastenwächters: https://github.com/8n1/briefkastenwaechter
 
 ## Features / Ablauf:
 * Verbindet sich mit dem WLAN
