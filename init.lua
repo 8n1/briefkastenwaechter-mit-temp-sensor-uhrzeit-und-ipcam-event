@@ -45,7 +45,7 @@ function getTemperature(sensor_pin)
         temp = 0
     end
     
-    return temp
+    return string.format("%."..precision.."f", temp)
 end
 -- ignore first reading (it's old because it was taken before going to DeepSleep)
 getTemperature(tempsensor_pin)
