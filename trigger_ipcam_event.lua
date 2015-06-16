@@ -9,10 +9,10 @@
 conn = net.createConnection(net.TCP, 0)
 conn:on("receive", function(conn, payload)
     if string.find(payload, "HTTP/1.0 200 OK") then
-        print(" -> SUCCESS")
+        print(" -> SUCCESS\n")
     else
         print(payload)
-        print(" -> FAIL")
+        print(" -> FAIL\n")
     end
 end)
 conn:connect(cam_port, cam_ip)
