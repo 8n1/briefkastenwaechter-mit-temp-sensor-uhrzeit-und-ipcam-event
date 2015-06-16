@@ -31,21 +31,24 @@ base64_pass = "am9oOmpvaA=="
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(" NodeMCU Briefkastenwaechter     ")
 print(" mit Temp-Sensor,Uhrzeit und     ")
-print(" IP Cam Event                    ")
+print(" IP Cam Event v0.90              ")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("")
 
 -- Read temperature sensor
-function getTemperature(sensor_pin)
+function getTemperature(sensor_pin, debug)
     sensor = require("ds18b20")
     
     sensor.setup(sensor_pin)
     temp = sensor.read()
     if temp == nil then
-        print("Couldn't read sensor. Check wiring")
+        if debug == 1 then
+            print(" -> 'Could not read sensor. Check wiring'")
+        end
         temp = 0
     end
     
-    return string.format("%."..precision.."f", temp)
+    return string.format("%." ..precision.. "f", temp)
 end
 -- ignore first reading (it's old because it was taken before going to DeepSleep)
 getTemperature(tempsensor_pin)
@@ -56,21 +59,21 @@ tmr.alarm(0, 1000, 1, function()
     if wifi.sta.getip() == nil then
         -- do nothing
     else
-        print(" -> IP: "..wifi.sta.getip())
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print(" -> IP: " ..wifi.sta.getip())
+        print("")
         tmr.stop(0)
 
         -- get ds temperature
         print(" Getting temperature...  ")
-        temperature = getTemperature(tempsensor_pin)
+        temperature = getTemperature(tempsensor_pin, 1)
         print(" -> Temperature: " ..temperature.. "'C")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("")
         
         print(" Triggering IP Cam Event...")
         dofile("trigger_ipcam_event.lc")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("")
 
-        -- Get time from webserver
+        -- Get time and trigger Pushingbox notification
         print(" Getting time...")
         dofile("get_time.lc")
     end
@@ -78,8 +81,8 @@ end)
 
 -- force deep sleep if e.g. AP is not reachable
 tmr.alarm(1, 10000, 0, function()
-    print("~~~~~~~~~~~~~~~~~~~~~~")
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~")
     print(" Forcing DeepSleep...")
-    print("~~~~~~~~~~~~~~~~~~~~~~")
-    node.dsleep(0,1)
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~")
+    node.dsleep(0, 1)
 end)
