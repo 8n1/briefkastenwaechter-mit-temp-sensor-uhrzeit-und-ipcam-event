@@ -8,16 +8,16 @@ function triggerPushingboxScenario(date, time)
     conn = net.createConnection(net.TCP, 0)
     conn:on("receive", function(conn, payload)
         if string.find(payload, "HTTP/1.1 200 OK") then
-            print(" -> SUCCESS")
+            print(" -> SUCCESS\n")
         else
             print(payload)
-            print(" -> FAIL")
+            print(" -> FAIL\n")
         end
         -- Go to deep sleep anyway and never wake up
-        print("~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
         print(" DeepSleeping...  ")
-        print("~~~~~~~~~~~~~~~~~~")
-        node.dsleep(0,1)
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
+        node.dsleep(0, 1)
     end)
     conn:dns('api.pushingbox.com', function(conn, ip)
         conn:connect(80, ip)
