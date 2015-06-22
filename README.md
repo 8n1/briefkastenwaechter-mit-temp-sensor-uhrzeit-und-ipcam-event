@@ -1,7 +1,7 @@
 # briefkastenwaechter-mit-temp-sensor-uhrzeit-und-ipcam-event
 NodeMCU Briefkastenwaechter mit DS18B20 Temperatur Sensor, Uhrzeit und IP Cam Event.
 
-Das hier ist eine für das unten verlinkte Projekt erweiterte Version des "einfachen" Briefkastenwächters: https://github.com/8n1/NodeMCU-Briefkastenwaechter
+Das hier ist eine für das unten verlinkte Projekt erweiterte Version des Briefkastenwächters: https://github.com/8n1/NodeMCU-Briefkastenwaechter
 
 ## Features / Ablauf:
 * Verbindet sich mit dem WLAN
@@ -16,10 +16,11 @@ Datum und Uhrzeit werden von einem beliebigen Webserver geholt (Siehe Quelle 2),
 
 ## Konfiguration:
 
-Es müssen nur die folgenden Variablen in der init.lua angepasst werden. 
+Die komplette Konfiguration erfolgt in der init.lua. 
+Angepasst werden müssen nur die folgenden Variablen.
 
 * **devid = "xxxxx"**
--> Hier muss die Pushingbox Device ID des Szenarios eingetragen werden das aktviert werden soll.
+-> Hier muss die Pushingbox Device ID des Szenarios eingetragen werden das aktviert werden soll. 
 
 * **tempsensor_pin = 4**
 -> Der Pin an dem der DS18B20 angeschlossen ist entsprechend dem NodeMCU I/O Index. Der I/O Index 4 entspricht GPIO2.
