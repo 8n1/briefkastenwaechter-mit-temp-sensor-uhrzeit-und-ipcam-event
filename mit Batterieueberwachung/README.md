@@ -5,7 +5,7 @@ NodeMCU Briefkastenwaechter mit DS18B20 Temperatur Sensor, Uhrzeit, IP Cam Event
 Changelog - 15.07.2015
 * Gesamte konfiguration über eine einzige Datei (config.lua)
 * Batterieüberwachung mittels Spannungsteiler
-* Alles umfangreicher konfigurierbar, Neue Pushingbox Variablen ($vbat$,..)
+* Alles umfangreicher konfigurierbar, Neue Pushingbox Variablen ($vbat$, $ip$..)
 * Wahlweise Statische oder dynamische IP
 * Wifi Signalstärke wird mitgeschickt: $rssi$, $quality$ (erst ab nodemcu_float_0.9.6-dev_20150627)
 
@@ -19,6 +19,7 @@ Eine für das unten verlinkte Projekt erweiterte Version des Briefkastenwächter
 
 * Liest die Wlan Signalstärke aus (Erst ab nodemcu_float_0.9.6-dev_20150627 verfügbar !) (optional)
 * Ermittelt die Batteriespannung mit einem Spannungsteiler und dem internen ADC (optional)
+
 * Liest die akutelle Temperatur von einem DS18B20 Temperatursensor aus (optional)
 * Löst ein frei definierbares Event auf einer (mittels HTTP Basic Authentifizierung gesicherten) Axis IP Cam aus. Schickt z.B. ein Foto. (optional)
 
@@ -144,14 +145,14 @@ Folgende Variablen lassen sich je nach konfiguration (aktivierte Features in der
 * **$rssi$**		-	WLAN Signalstärke in dBm: -44
 * **$quality$**		-	Signalstärke (dBm) umgerechnet in Prozent ( quality=2*(rssi+100) )
 
-#### Nur wenn  use_battery_check
+#### Nur wenn use_battery_check
 * **$vbat$**		-	Batteriespannung: 0.00
 * **$bat_info$**	-	Der zu der Batteriespannung passende InfoText
 
-#### Nur wenn  use_temp_sensor
+#### Nur wenn use_temp_sensor
 * **$temperatur$	-	Aktuelle Temperatur: 0.0 (Nachkommstellen abhängig von 'precision')
 
-#### Nur wenn  use_date_time
+#### Nur wenn use_date_time
 * **$date$**		-	Datum: Wed 15 Jul 2015
 * **$time$**		-	Uhrzeit: 00:00:00
 * **$time_n$**		-	Uhrzeit: 00:00
