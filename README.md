@@ -35,7 +35,7 @@ Eine inzwischen sehr umfangreich erweiterte Version des einfachen Briefkastenwä
 * Batterieüberwachung mittels internem ADC (**FERTIG - 15.07.2015**)
 * Konfiguration und Test über eine einfache Weboberfläche
 * Kleines Skript um alle Dateien auf den ESP hochzuladen
-* Verbindung mit dem WLAN nicht mehr per Timer Alarm sonder per eventMonReg()
+* Verbindung mit dem WLAN nicht mehr per Timer Alarm sonder per wifi.sta.eventMonReg()
 * Alternativen für Pushingbox
 
 ### Bugs:
