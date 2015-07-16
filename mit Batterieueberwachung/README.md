@@ -63,7 +63,7 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 
 
 #### Pushingbox device id
-* **devid = "xxxxx"**	-> Hier muss die Pushingbox DeviceID des Szenarios eingetragen werden das aktviert werden soll wenn die ermittelte Batteriespannung über der ersten Warnspannung liegt. Die Batterie also OK ist.
+* **devid = "xxxxx"**	-> Die Pushingbox DeviceID des Szenarios eingetragen werden das aktviert werden soll wenn die ermittelte Batteriespannung über der ersten Warnspannung liegt. Die Batterie also OK ist.
 
 
 #### Wenn use_static_ip
