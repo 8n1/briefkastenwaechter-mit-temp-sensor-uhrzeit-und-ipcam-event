@@ -1,88 +1,112 @@
---------------------------------------
--- WIFI configuration (only needs to be done once)
---------------------------------------
+
+-- Set to Station Mode
 wifi.setmode(wifi.STATION)
---wifi.sta.config("SSID", "PASSWD")
+
+-- Load user config
+dofile("config.lua")
+
+if use_static_ip then
+    wifi.sta.setip({ip=sensor_ip, netmask=sensor_netmask, gateway=sensor_gateway})
+end
+
+-- Connect to AP
 wifi.sta.connect()
 
---------------------------------------
--- Pushingbox device id
-devid = "xxxxx"
---------------------------------------
--- Temperatur Sensor pin (nodemcu I/O Index)
-tempsensor_pin = 4
---------------------------------------
--- Decimal places for sensor value
-precision = 1
---------------------------------------
--- Server to get the time from (not NTP)
-time_server_ip = "192.168.1.123"
---------------------------------------
--- Time offset
-time_offset = 1
---------------------------------------
--- IP cam config
-cam_ip = "192.168.1.18"
-cam_port = 8001
-event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"
-base64_pass = "am9oOmpvaA=="
---------------------------------------
+-- Small intro
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print(" NodeMCU Briefkastenwaechter       ")
+print(" mit Temperatur, Uhrzeit,          ")
+print(" IP Cam und Batterie-ueberwachung  ")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print(" NodeMCU Briefkastenwaechter     ")
-print(" mit Temp-Sensor,Uhrzeit und     ")
-print(" IP Cam Event v0.90              ")
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print("")
-
--- Read temperature sensor
-function getTemperature(sensor_pin, debug)
-    sensor = require("ds18b20")
-    
-    sensor.setup(sensor_pin)
-    temp = sensor.read()
-    if temp == nil then
-        if debug == 1 then
-            print(" -> 'Could not read sensor. Check wiring'")
-        end
-        temp = 0
-    end
-    
-    return string.format("%." ..precision.. "f", temp)
+-- Only use a single devid?
+if use_single_devid then
+    print("Single devid")
+    warn_devid1 = devid
+    warn_devid2 = devid
 end
--- ignore first reading (it's old because it was taken before going to DeepSleep)
-getTemperature(tempsensor_pin)
 
--- wait until we have an IP from the AP
-tmr.alarm(0, 1000, 1, function()
+-- Set startup time 
+startup_time = dhcp_startup_time
+if use_static_ip then
+    print("Static IP\n")
+    startup_time = static_startup_time
+else
+    print("DHCP\n")
+end
+
+-- Get Wifi strength
+rssi = 0
+quality = 0
+if use_wifi_strength then
+    dofile("get_rssi.lc")
+end
+
+-- Get battery voltage
+vin = 0
+send_warning = 0
+--bat_info
+if use_battery_check then
+    dofile("get_battery_voltage.lc")
+    vin = check_volts()
+
+    print("Batterie Spannung: "..string.format("%.2f", vin).."V")
+    print("Warn Modus: "..send_warning)
+    print("Bat: "..bat_info.."\n")
+
+    check_volts = nil
+end
+    
+-- Wait until we have an IP from the AP
+tmr.alarm(0, startup_time, 1, function()
     print(" Checking IP...")
     if wifi.sta.getip() == nil then
-        -- do nothing
+        tmr_now = tmr.now()
+        -- Do nothing
     else
-        print(" -> IP: " ..wifi.sta.getip())
-        print("")
         tmr.stop(0)
 
-        -- get ds temperature
-        print(" Getting temperature...  ")
-        temperature = getTemperature(tempsensor_pin, 1)
-        print(" -> Temperature: " ..temperature.. "'C")
-        print("")
-        
-        print(" Triggering IP Cam Event...")
-        dofile("trigger_ipcam_event.lc")
-        print("")
+        -- Time to get an IP
+        ip_time = string.format("%.2f", tmr.now()/1000/1000)
 
-        -- Get time and trigger Pushingbox notification
-        print(" Getting time...")
+        -- Print ip and wifi strength quality
+        print(" -> IP: " ..wifi.sta.getip())
+        if use_wifi_strength then
+            print(" -> RSSI is: "..rssi.."dBm")
+            print(" -> Quality is: "..quality.."%\n")
+        else
+            print("")
+        end
+
+        -- Get temperature
+        ds_temp = 0
+        if use_temp_sensor then
+            print(" Getting temperature...  ")
+            dofile("get_ds_temp.lc")
+            debug = 1
+            dofile("get_ds_temp.lc")
+            print(" -> Temperature: " ..ds_temp.. "'C")
+            print("")
+        end
+
+        -- Activate ip cam event
+        if use_ipcam_event then
+            print(" Triggering IP Cam Event...")
+            dofile("trigger_ipcam_event.lc")
+            print("")
+        end
+        
+        -- Get time and activate Pushingbox Scenario
         dofile("get_time.lc")
     end
 end)
 
--- force deep sleep if e.g. AP is not reachable
-tmr.alarm(1, 10000, 0, function()
-    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print(" Forcing DeepSleep...")
+-- Force deep sleep if e.g. AP is not reachable
+tmr.alarm(1, timout*1000, 0, function()
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~")
+    print(" Forcing DeepSleep...    ")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~")
-    node.dsleep(0, 1)
+    if DEBUG ~= true then
+        node.dsleep(0, 1)
+    end
 end)
