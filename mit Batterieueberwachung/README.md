@@ -2,7 +2,7 @@
 NodeMCU Briefkastenwaechter mit DS18B20 Temperatur Sensor, Uhrzeit, IP Cam Event + Batterieüberwachung
 
 
-## Updates
+## Update(s)
 Changelog - 15.07.2015
 * Gesamte konfiguration über eine einzige Datei (config.lua)
 * Batterieüberwachung mittels Spannungsteiler
@@ -75,7 +75,7 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 * **sensor_gateway	= "192.168.0.1"**	-> Standard Gateway
 
 ##### Wenn use_battery_check
-* **vref = 0.985**	-> Referenzspannung des internen ADC. Muss ermittelt werden. Todo: Beschreibung wie
+* **vref = 0.985**	-> Referenzspannung des internen ADC. Muss ermittelt werden. Todo: beschreiben wie
 
 
 * **r1 	= 33000**
