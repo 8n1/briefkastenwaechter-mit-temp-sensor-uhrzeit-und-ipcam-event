@@ -5,7 +5,7 @@ NodeMCU Briefkastenwaechter mit DS18B20 Temperatur Sensor, Uhrzeit, IP Cam Event
 Changelog - 15.07.2015
 * Gesamte konfiguration über eine einzige Datei (config.lua)
 * Batterieüberwachung mittels Spannungsteiler
-* Alles umfangreicher konfigurierbar, Neue Pushingbox Variablen ($vbat$, $ip$..)
+* Alles umfangreicher konfigurierbar; Neue Pushingbox Variablen ($vbat$, $ip$, ...)
 * Wahlweise Statische oder dynamische IP
 * Wifi Signalstärke wird mitgeschickt: $rssi$, $quality$ (erst ab nodemcu_float_0.9.6-dev_20150627)
 
