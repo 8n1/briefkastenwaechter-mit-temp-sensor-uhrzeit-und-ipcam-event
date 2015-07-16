@@ -58,7 +58,7 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 
 * **use_single_devid 	= true**	-> Ein einziges Scenarios/Device ID verwenden. Oder mehrere (devid, warn_devid1, warn_devid2) die abhänig von den festgelegten Warnspannungen ausgelöst/aktiviert werden.
 
-* **use_wifi_strength = false**		-> Verbindungstärke zum AccesPoint ermitteln. Erst ab der Version nodemcu_float_0.9.6-dev_20150627 verfügbar!
+* **use_wifi_strength = false**		-> Wlan Signalstärke ermitteln. Erst ab der Version nodemcu_float_0.9.6-dev_20150627 verfügbar!
 
 
 ##### WIFI configuration
@@ -76,10 +76,16 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 
 ##### Wenn use_battery_check
 * **vref = 0.985**	-> Referenzspannung des internen ADC. Muss ermittelt werden. Todo: Beschreibung wie
+
+
 * **r1 	= 33000**
 * **r2 	= 10000**   -> Widerstandswerte für den Spannungsteiler (r1, r2). Die aktuelle konfiguration ist auf einen Lipo Akku ausgelegt (ca. 3.0V(leer) - 4.2V(voll)).
+
+
 * **bat_info 	= "OK"**
 -> Eine zusätzliche Info die in die Nachricht die man bekommt mit $bat_info$ eingebaut werden kann. Standardmäßig wird wenn mit der Batterie alles in Ordnung ist ein OK eingebaut. Also die erste Warnspannung noch nicht unterschritten wurde.
+
+
 * **warn_volt1 	= 3.7** -> Erste Warnspannung
 * **warn_devid1 = "xxxxx"** -> DeviceID des Scenarios das ausgelöst wird wenn die erste Warnspannung unterschritten ist. 
 * **warn_info1 	= "50%"** -> Inhalt von $bat_info$ wenn die erste Warnspannung unterschritten wurde
