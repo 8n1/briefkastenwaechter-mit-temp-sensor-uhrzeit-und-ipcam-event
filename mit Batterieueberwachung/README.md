@@ -15,25 +15,24 @@ Eine für das unten verlinkte Projekt erweiterte Version des Briefkastenwächter
 
 
 ## Ablauf/Features:
-* Verbindet sich mit dem gespeicherten WLAN (Wahlweise mit Statischer oder Dynamischer IP)
+* Verbindet sich mit dem gespeicherten WLAN Netzwerk (Wahlweise mit Statischer oder Dynamischer IP)
 
-* Liest die Wlan Signalstärke aus (Erst ab nodemcu_float_0.9.6-dev_20150627 verfügbar !) (optional)
+* Ermittelt die Wlan Signalstärke (RSSI) (Erst ab nodemcu_float_0.9.6-dev_20150627 verfügbar !) (optional)
 * Ermittelt die Batteriespannung mit einem Spannungsteiler und dem internen ADC (optional)
 * Liest die akutelle Temperatur von einem DS18B20 Temperatursensor aus (optional)
 * Löst ein frei definierbares Event auf einer (mittels HTTP Basic Authentifizierung gesicherten) Axis IP Cam aus. Schickt z.B. ein Foto. (optional)
 * Aktiviert ein Pushingbox Szenario entsprechend der Konfiguration und schickt eine reihe von Variablen mit. Diese Variablen können dann in die Nachricht(Message) die von Pushingbox an euch bzw. den hinterlegten Service(link zu den services) verschickt wird eingebaut werden.
 
-* Legt sich schlafen (-> DeepSleep). 
+* Legt sich schlafen (DeepSleep).
 * Mit einem Reset wiederholt sich die ganze Prozedur. 
 
 
 ## Geplante Erweiterungen:
 * Batterieüberwachung mittels internem ADC (FERTIG - 15.07.2015)
-* Datum zerlegen und 
 * Konfiguration und Test über eine einfache Weboberfläche
 * Kleines Skript um alle Dateien auf den ESP hochzuladen
 * Verbindung mit dem WLAN nicht mehr per Timer Alarm sonder per eventMonReg()
-* Verschiedene Services
+* Alternativen für Pushingbox
 ## Bugs:
 * Winter/Sommerzeit wird noch nicht berücksichtigt
 
@@ -114,9 +113,9 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 
 #### dev stuff
 * **dhcp_startup_time 	= 1000**
--> Zeitkonstante für den Timer Alarm mit dem geprüft wird ob wird eine IP haben wenn use_static_ip nicht auf 'true' gesetzt ist
+-> Zeitkonstante für den Timer Alarm mit dem geprüft wird ob wird eine IP haben (use_static_ip != true)
 * **static_startup_time = 500**
- -> Zeitkonstante für den Timer Alarm wenn use_static_ip auf 'true' gesetzt ist
+ -> Zeitkonstante für den Timer Alarm bei verwendung einer Statischen IP. (use_static_ip == true)
 * **timout = 10**
  -> Die Anzahl der Sekunden dem ESP maximal gelassen wird um sich mit dem WLAN zu verbinden und das Scenario auszulösen bevor er wieder in den Tiefschlaf versetzt wird. Falls z.B. der AP nicht erreichbar ist.
 * **DEBUG = false**
