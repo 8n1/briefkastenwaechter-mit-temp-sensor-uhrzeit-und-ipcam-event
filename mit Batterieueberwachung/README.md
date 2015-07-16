@@ -129,7 +129,7 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 
 ## Installation:
 
-* NodeMCU Firmware flashen (falls noch nicht gemacht) 
+* NodeMCU Firmware flashen (Um alle Features verwenden zu können muss diese verwendet werden:  https://github.com/nodemcu/nodemcu-firmware/releases/tag/0.9.6-dev_20150627 - bei der neuesten(0.9.6-dev_20150704) gibt es noch Probleme. Alternativ kann auch die letzte 0.9.5 verwendet werden: https://github.com/nodemcu/nodemcu-firmware/releases/tag/0.9.5_20150318. Dann fällt allerdings die Wlan Signalstärke weg.)
 * config.lua anpassen
 * Alle Lua Skripte auf den ESP übertragen und auch bis auf die init.lua und die config.lua komplieren. 
 
