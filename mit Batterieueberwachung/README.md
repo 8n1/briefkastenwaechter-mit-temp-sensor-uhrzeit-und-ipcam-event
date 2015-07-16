@@ -1,7 +1,8 @@
 ## nodemcu-briefkastenwaechter
 NodeMCU Briefkastenwaechter mit DS18B20 Temperatur Sensor, Uhrzeit, IP Cam Event + Batterieüberwachung
 
-### Updates
+
+## Updates
 Changelog - 15.07.2015
 * Gesamte konfiguration über eine einzige Datei (config.lua)
 * Batterieüberwachung mittels Spannungsteiler
@@ -10,12 +11,12 @@ Changelog - 15.07.2015
 * Wifi Signalstärke wird mitgeschickt: $rssi$, $quality$ (erst ab nodemcu_float_0.9.6-dev_20150627)
 
 
-### Intro
+## Intro
 Eine inzwischen sehr umfangreich erweiterte Version des einfachen Briefkastenwächters (https://github.com/8n1/NodeMCU-Briefkastenwaechter). 
 ...
 
 
-### Ablauf/Features:
+## Ablauf/Features:
 * Verbindet sich nach dem anlegen der Batteriespannung oder einem Reset automatisch mit dem gespeicherten WLAN Netzwerk (Wahlweise mit Statischer oder Dynamischer IP)
 
 
@@ -25,13 +26,13 @@ Eine inzwischen sehr umfangreich erweiterte Version des einfachen Briefkastenwä
 * Löst ein frei definierbares Event auf einer (mittels HTTP Basic Authentifizierung gesicherten) Axis IP Cam aus. Schickt z.B. ein Foto. (**optional**)
 
 
-* Aktiviert ein Pushingbox Szenario entsprechend der Konfiguration und schickt die gesammelten Informationen in Form von Variablen mit. Diese Variablen können dann in die Nachricht(Message) die von Pushingbox an euch bzw. den hinterlegten Service(link zu den services) verschickt wird eingebaut werden.
+* Aktiviert ein Pushingbox Szenario entsprechend der Konfiguration. Dabei werden auch die gesammelten Informationen in Form von Variablen mit an Pushingbox übertragen. Diese Variablen können dann in die Nachricht die von Pushingbox an euch bzw. den hinterlegten Service(Verfügbare services: http://i.imgur.com/xr65rBj.png) verschickt wird eingebaut werden. (https://www.pushingbox.com/api.php)
 
 
 * Legt sich wieder schlafen (DeepSleep).
 
 
-### Geplante Erweiterungen:
+## Geplante Erweiterungen:
 * Batterieüberwachung mittels internem ADC (**FERTIG - 15.07.2015**)
 * Konfiguration und Test über eine einfache Weboberfläche
 * Kleines Skript um alle Dateien auf den ESP hochzuladen
@@ -41,7 +42,7 @@ Eine inzwischen sehr umfangreich erweiterte Version des einfachen Briefkastenwä
 ### Bugs:
 * Winter/Sommerzeit wird noch nicht berücksichtigt
 
-### Konfiguration: config.lua
+## Konfiguration: config.lua
 Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur diese Datei angepasst werden.
 ...
 
@@ -120,14 +121,14 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 
 
 
-### Installation:
+## Installation:
 
 * NodeMCU Firmware flashen (falls noch nicht gemacht) 
 * config.lua anpassen
 * Alle Lua Skripte auf den ESP übertragen und auch bis auf die init.lua und die config.lua komplieren. 
 
 
-### Verfügbare Pushingbox Variablen:
+## Verfügbare Pushingbox Variablen:
 
 Folgende Variablen lassen sich je nach konfiguration (aktivierte Features in der config.lua) in die Nachricht die von Pushingbox an euch bzw. den hinterlegten Service verschickt wird einbauen.
 
@@ -162,11 +163,12 @@ RasPiPo(st) 2 - Der Briefkasten verschickt E-Mails - http://www.forum-raspberryp
 
 .:.
 
-### Resourcen / Quellen:
+## Resourcen / Quellen:
 
 1. https://github.com/8n1/briefkastenwaechter
 2. http://benlo.com/esp8266/esp8266Projects.html (-> Ask Google for the Time)
 3. https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_en
 4. https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_en#wifistagetap (-> get RSSI for currently configured AP)
+5. https://www.pushingbox.com/api.php
 
 ##### Tags: ESP8266, NodeMCU, Lua, Pushingbox, Axis IP Cam, DeepSleep, Battery Voltage, Voltage Divider
