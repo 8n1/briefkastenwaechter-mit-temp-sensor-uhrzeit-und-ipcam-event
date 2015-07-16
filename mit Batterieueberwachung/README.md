@@ -83,17 +83,17 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 
 * **warn_volt1 	= 3.7**
 -> Erste Warnspannung
-* **warn_devid1 = "vA0B298E993F6878"**
+* **warn_devid1 = "xxxxx"**
 -> DeviceID des Scenarios das ausgelöst wird wenn die erste Warnspannung unterschritten ist. 
 * **warn_info1 	= "50%"**
--> Info ($bat_info$) wenn die erste Warnspannung unterschritten wurde
+-> Inhalt von $bat_info$ wenn die erste Warnspannung unterschritten wurde
 
 * **warn_volt2 	= 3.3**
 -> Zweite Warnspannung
-* **warn_devid2 = "v1F4F5FC530AB030"**
+* **warn_devid2 = "xxxxx"**
 -> DeviceID des Scenarios das ausgelöst wird wenn die zweite Warnspannung unterschritten ist. 
 * **warn_info2 	= "20%"**
--> Info ($bat_info$) wenn die erste Warnspannung unterschritten wurde
+-> Inhalt von $bat_info$ wenn die zweite Warnspannung unterschritten wurde
 
 #### Wenn  use_temp_sensor
 * **tempsensor_pin = 4**
@@ -102,13 +102,13 @@ Die gesamte Konfiguration erfolgt jetzt über die config.lua. Es muss also nur d
 -> Anzahl der Nachkommastellen auf den der Temperaturwert begrenzt werden soll.
 
 #### Wenn use_date_time
-* **time_server_ip = "192.168.1.123"**
+* **time_server_ip = "192.168.0.123"**
 -> Der Webserver von dem die Zeit geholt wird.
 * **time_offset = 1**
 -> Die Anzahl der Stunden die dazugerechnet werden sollen falls die ermittelte Zeit abweicht. (TODO: Winter/Sommerzeit beachten)
 
 #### Wenn use_ipcam_event
-* **cam_ip = "192.168.1.18"**	-> IP Addresse
+* **cam_ip = "192.168.0.18"**	-> IP Addresse
 * **cam_port = 8001** 	-> Port (Darf kein String sein!)
 * **event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"** 	-> Event URL die aufgerufen werden soll
 * **base64_pass = "am9oOmpvaA=="** 	-> Die base64 codierten Zugangsdaten (benutzer:passwort) für die HTTP Basic Authentifizierung
