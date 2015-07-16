@@ -19,10 +19,8 @@ Eine für das unten verlinkte Projekt erweiterte Version des Briefkastenwächter
 
 * Liest die Wlan Signalstärke aus (Erst ab nodemcu_float_0.9.6-dev_20150627 verfügbar !) (optional)
 * Ermittelt die Batteriespannung mit einem Spannungsteiler und dem internen ADC (optional)
-
 * Liest die akutelle Temperatur von einem DS18B20 Temperatursensor aus (optional)
 * Löst ein frei definierbares Event auf einer (mittels HTTP Basic Authentifizierung gesicherten) Axis IP Cam aus. Schickt z.B. ein Foto. (optional)
-
 * Aktiviert ein Pushingbox Szenario entsprechend der Konfiguration und schickt eine reihe von Variablen mit. Diese Variablen können dann in die Nachricht(Message) die von Pushingbox an euch bzw. den hinterlegten Service(link zu den services) verschickt wird eingebaut werden.
 
 * Legt sich schlafen (-> DeepSleep). 
@@ -174,4 +172,4 @@ RasPiPo(st) 2 - Der Briefkasten verschickt E-Mails - http://www.forum-raspberryp
 3. https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_en
 4. https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_en#wifistagetap (-> get RSSI for currently configured AP)
 
-#### Tags: ESP8266, NodeMCU, Lua, Pushingbox, Axis IP Cam, DeepSleep
+#### Tags: ESP8266, NodeMCU, Lua, Pushingbox, Axis IP Cam, DeepSleep, Battery Voltage, Voltage Divider,
