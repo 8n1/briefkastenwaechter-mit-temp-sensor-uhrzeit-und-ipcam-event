@@ -71,6 +71,6 @@ else
 
     print(" Triggering Scenario " ..send_warning.. " ("..bat_info..")...")
     if DEBUG ~= true then
-        dofile("trigger_scenario.lc")
+        dofile("trig_pushingbox_scenario.lc")
     end
 end
