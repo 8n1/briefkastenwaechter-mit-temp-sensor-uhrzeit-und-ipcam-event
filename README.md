@@ -66,11 +66,6 @@ Die gesamte Konfiguration erfolgt über die config.lua. Es muss nur diese Datei 
 * **devid = "xxxxx"**	-> Die Pushingbox DeviceID des Szenarios eingetragen werden das aktviert werden soll wenn die ermittelte Batteriespannung über der ersten Warnspannung liegt. Die Batterie also OK ist.
 
 
-##### Wenn use_static_ip
-* **sensor_ip 		= "192.168.0.126"**	-> IP Addresse
-* **sensor_netmask 	= "255.255.255.0"**	-> Netzmaske
-* **sensor_gateway	= "192.168.0.1"**	-> Standard Gateway
-
 ##### Wenn use_battery_check
 * **vref = 0.985**	-> Referenzspannung des internen ADC. Muss ermittelt werden. Todo: beschreiben wie
 
