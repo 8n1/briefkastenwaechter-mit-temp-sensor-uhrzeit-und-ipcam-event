@@ -5,10 +5,6 @@ wifi.setmode(wifi.STATION)
 -- Load user config
 dofile("config.lua")
 
-if use_static_ip then
-    wifi.sta.setip({ip=sensor_ip, netmask=sensor_netmask, gateway=sensor_gateway})
-end
-
 -- Connect to AP
 wifi.sta.connect()
 
@@ -24,15 +20,6 @@ if use_single_devid then
     print("Single devid")
     warn_devid1 = devid
     warn_devid2 = devid
-end
-
--- Set startup time 
-startup_time = dhcp_startup_time
-if use_static_ip then
-    print("Static IP\n")
-    startup_time = static_startup_time
-else
-    print("DHCP\n")
 end
 
 -- Get Wifi strength
@@ -58,7 +45,7 @@ if use_battery_check then
 end
     
 -- Wait until we have an IP from the AP
-tmr.alarm(0, startup_time, 1, function()
+tmr.alarm(0, dhcp_startup_time, 1, function()
     print(" Checking IP...")
     if wifi.sta.getip() == nil then
         tmr_now = tmr.now()
