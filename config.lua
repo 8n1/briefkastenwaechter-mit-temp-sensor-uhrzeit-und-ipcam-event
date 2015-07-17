@@ -9,7 +9,7 @@ use_ipcam_event 	= true	-- ipcam
 
 use_single_devid 	= true 	-- only set to false if use_battery_check = true
 
-use_wifi_strength 	= false	-- only available since nodemcu_float_0.9.6-dev_20150627
+use_wifi_strength 	= true	-- only available since nodemcu_float_0.9.6-dev_20150627
 
 --------------------------------------
 -- WIFI config
@@ -55,7 +55,7 @@ precision = 1
 -- Webserver to get the time from (not NTP)
 time_server_ip = "192.168.1.123"
 -- Time offset
-time_offset = 1
+time_offset = 2
 
 --------------------------------------
 -- if use_ipcam_event set:

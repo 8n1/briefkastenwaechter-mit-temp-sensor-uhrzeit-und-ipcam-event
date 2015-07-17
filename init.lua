@@ -92,7 +92,7 @@ tmr.alarm(0, startup_time, 1, function()
         -- Activate ip cam event
         if use_ipcam_event then
             print(" Triggering IP Cam Event...")
-            dofile("trigger_ipcam_event.lc")
+            dofile("trig_ipcam_event.lc")
             print("")
         end
         
