@@ -1,18 +1,18 @@
 --------------------------------------------
 -- NodeMCU Briefkastenwächter
---  mit Logging - Version 1.1
+--  Version 1.2 - Mit Logging und deutschem Datum
 --------------------------------------------
 
---HEAP_DEBUG = true
+HEAP_DEBUG = true
 
 -- Load user config
-dofile("config.lc")
+dofile("config.lua")
 
 --------------------------------------
 -- Intro
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(" NodeMCU Briefkastenwaechter  ")
-print("  mit Logging - v1.1          ")
+print("  mit Logging - v1.2          ")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 --------------------------------------
@@ -20,7 +20,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 data = ""
 
 --------------------------------------
--- Check logfiles, print content, append to query string
+-- Check logfiles, print/append content to the query string
 dofile("print_logs.lc")
 
 --------------------------------------
@@ -55,7 +55,7 @@ tmr.alarm(0, 1300, 1, function()
         print(" Launching Scenario: " ..devid .." " ..mod .."\n")
         mod, vin, bat_info, USE_BATTERY_CHECK = nil
     end
-
+    
     --------------------------------------
     -- Check if we got a IP (DHCP)
     if wifi.sta.getip() == nil then
@@ -68,7 +68,7 @@ tmr.alarm(0, 1300, 1, function()
         local ip = wifi.sta.getip()
         local ip_time = string.format("%.2f", tmr.now()/1000/1000)
         print(" -> Got IP: " ..ip .." (" ..ip_time .."s)\n")
-        -- ...append it to Query String and clean up
+        -- ...and append it to Query String
         data = data .."&ip=" ..ip .."&ip_time=" ..ip_time
         ip, ip_time = nil
         
@@ -98,7 +98,7 @@ tmr.alarm(0, 1300, 1, function()
     end
     
     --------------------------------------
-    -- Check 8 times max if got a IP (~10s)
+    -- Check max 8 times if got a IP (~10s)
     if wifi_counter == 8  then
         tmr.stop(0)
         

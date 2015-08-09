@@ -14,10 +14,10 @@ devid = "xxxxx"
 --------------------------------------
 USE_TEMP_SENSOR = false
 --------------------------------------
-  -- ds18b20 sensor pin (nodemcu I/O Index)
+  -- ds18b20 data pin (nodemcu I/O Index)
   tempsensor_pin = 3
   -- Decimal places for sensor value
-  precision = 1
+  tempsensor_precision = 1
 
 --------------------------------------
 USE_BATTERY_CHECK = false
@@ -52,10 +52,12 @@ USE_MULTIPLE_DEVIDS = false  -- depends on USE_BATTERY_CHECK
 --------------------------------------
 USE_DATE_TIME = false
 --------------------------------------
-  -- Webserver to get the time from (not NTP)
+  -- Webserver to get the time from
   time_server_ip = "192.168.1.123"
   -- Time offset
   time_offset = 2
+  -- Translate date to german (Dec=Dez, Tue=Di,..)
+  date_translate = true
 
 --------------------------------------
 USE_IPCAM_EVENT = false

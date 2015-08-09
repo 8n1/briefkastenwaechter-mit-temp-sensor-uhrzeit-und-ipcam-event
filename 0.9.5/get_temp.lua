@@ -21,7 +21,7 @@ end
 
 -- if not in debugging mode, format and append to Query String
 if ds_debug == nil then
-    ds_temp = string.format("%." ..precision.. "f", ds_temp)
+    ds_temp = string.format("%." ..tempsensor_precision.. "f", ds_temp)
     data = data .."&temperatur="..ds_temp
 end
 
