@@ -1,75 +1,73 @@
 
 --------------------------------------
--- SET FEATURES
+-- Wifi configuration
 --------------------------------------
-use_battery_check 	= true	-- battery
-use_temp_sensor 	= true	-- temp
-use_date_time 		= true 	-- date
-use_ipcam_event 	= true	-- ipcam
-
-use_single_devid 	= true 	-- only set to false if use_battery_check = true
-
-use_wifi_strength 	= true	-- only available since nodemcu_float_0.9.6-dev_20150627
-
---------------------------------------
--- WIFI config
---------------------------------------
---wifi.sta.config("SSID", "PASSWD")	-- only needs to be done once - ESP saves wifi credentials in the flash memory
+wifi.setmode(wifi.STATION)
+--wifi.sta.config("SSDI", "PASSWD")
+--wifi.sta.connect()
 
 --------------------------------------
 -- Pushingbox device id
 --------------------------------------
-devid = "xxxxx"
+devid = "v7D8636220882200"
 
 --------------------------------------
--- if use_battery_check set:
+USE_TEMP_SENSOR = true
 --------------------------------------
--- adc vref
-vref = 0.985
--- Voltage divider values
-r1 	= 33000
-r2 	= 10000
--- Standard bat info 
-bat_info 	= "OK"
-
--- First Warning Voltage, devid and bat info
-warn_volt1 	= 3.7
-warn_devid1	= "xxxxx"
-warn_info1 	= "50%"
--- Second Warning Voltage, devid and bat info
-warn_volt2 	= 3.3
-warn_devid2	= "xxxxx"
-warn_info2 	= "20%"
+  -- ds18b20 sensor pin (nodemcu I/O Index)
+  tempsensor_pin = 3
+  -- Decimal places for sensor value
+  precision = 1
 
 --------------------------------------
--- if use_temp_sensor set:
+USE_BATTERY_CHECK = true
 --------------------------------------
--- Temperature sensor pin (nodemcu I/O Index)
-tempsensor_pin = 4
--- Decimal places for sensor value
-precision = 1
+  -- ADC reference voltage (adjust for your esp module)
+  vref = 0.985
+  -- Values for the resistor voltage divider
+  r1 = 33000
+  r2 = 10000
+--------------------------------------
+  -- Standard bat info ($bat_info$)
+  bat_info     = "OK"
+--------------------------------------
+  -- First Warning Voltage
+  warn_volt_1    = 0.4
+  -- Content of $bat_info$ if $vbat$ <= warn_volt1
+  warn_info_1    = "50%"
+--------------------------------------
+  -- Second Warning Voltage
+  warn_volt_2    = 0.3
+  -- Content of $bat_info$ if $vbat$ <= warn_volt2
+  warn_info_2    = "20%"
+  
+--------------------------------------
+USE_MULTIPLE_DEVIDS = false  -- depends on USE_BATTERY_CHECK
+--------------------------------------
+  -- First Warning Scenario (will be used if $vbat$ <= warn_volt1)
+  warn_devid_1   = "xxxxx"
+  -- Second Warning Scenario (will be used if $vbat$ <= warn_volt2)
+  warn_devid_2   = "xxxxx"
 
 --------------------------------------
--- if use_date_time set:
+USE_DATE_TIME = true
 --------------------------------------
--- Webserver to get the time from (not NTP)
-time_server_ip = "192.168.1.123"
--- Time offset
-time_offset = 2
+  -- Webserver to get the time from (not NTP)
+  time_server_ip = "192.168.1.123"
+  -- Time offset
+  time_offset = 2
 
 --------------------------------------
--- if use_ipcam_event set:
+USE_IPCAM_EVENT = false
 --------------------------------------
-cam_ip 		= "192.168.1.18"
-cam_port 	= 8001
-event_url 	= "/axis-cgi/io/virtualinput.cgi?action=6:/5000"
-base64_pass = "am9oOmpvaA=="
+  -- IP cam config
+  cam_ip = "192.168.1.125"
+  cam_port = 80
+  cam_event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"
+  cam_base64_pass = "am9oOmpvaA=="
 
-
 --------------------------------------
--- dev stuff
+--USE_CYCLIC_DEEPSLEEP = true
 --------------------------------------
- dhcp_startup_time	= 1000
---------------------------------------
- timout = 10
---------------------------------------
+  -- Wake up every 'sleep_time' minutes
+  --sleep_time = 1
