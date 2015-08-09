@@ -9,10 +9,10 @@ wifi.setmode(wifi.STATION)
 --------------------------------------
 -- Pushingbox device id
 --------------------------------------
-devid = "v7D8636220882200"
+devid = "xxxxx"
 
 --------------------------------------
-USE_TEMP_SENSOR = true
+USE_TEMP_SENSOR = false
 --------------------------------------
   -- ds18b20 sensor pin (nodemcu I/O Index)
   tempsensor_pin = 3
@@ -20,7 +20,7 @@ USE_TEMP_SENSOR = true
   precision = 1
 
 --------------------------------------
-USE_BATTERY_CHECK = true
+USE_BATTERY_CHECK = false
 --------------------------------------
   -- ADC reference voltage (adjust for your esp module)
   vref = 0.985
@@ -50,7 +50,7 @@ USE_MULTIPLE_DEVIDS = false  -- depends on USE_BATTERY_CHECK
   warn_devid_2   = "xxxxx"
 
 --------------------------------------
-USE_DATE_TIME = true
+USE_DATE_TIME = false
 --------------------------------------
   -- Webserver to get the time from (not NTP)
   time_server_ip = "192.168.1.123"
