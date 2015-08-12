@@ -1,4 +1,4 @@
--- Log wifi fails, increment content if file already exists
+-- Log wifi fails to fail, increment content if file already exists
 
 --fail_type = ""
 

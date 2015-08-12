@@ -2,8 +2,9 @@
 --------------------------------------
 -- Wifi configuration
 --------------------------------------
-wifi.setmode(wifi.STATION)
---wifi.sta.config("SSDI", "PASSWD")
+SSID = ""
+--wifi.setmode(wifi.STATION)
+--wifi.sta.config(SSID, "PASSWD")
 --wifi.sta.connect()
 
 --------------------------------------
@@ -12,7 +13,7 @@ wifi.setmode(wifi.STATION)
 devid = "xxxxx"
 
 --------------------------------------
-USE_TEMP_SENSOR = false
+USE_TEMP_SENSOR = true
 --------------------------------------
   -- ds18b20 data pin (nodemcu I/O Index)
   tempsensor_pin = 3
@@ -20,7 +21,7 @@ USE_TEMP_SENSOR = false
   tempsensor_precision = 1
 
 --------------------------------------
-USE_BATTERY_CHECK = false
+USE_BATTERY_CHECK = true
 --------------------------------------
   -- ADC reference voltage (adjust for your esp module)
   vref = 0.985
@@ -50,7 +51,7 @@ USE_MULTIPLE_DEVIDS = false  -- depends on USE_BATTERY_CHECK
   warn_devid_2   = "xxxxx"
 
 --------------------------------------
-USE_DATE_TIME = false
+USE_DATE_TIME = true
 --------------------------------------
   -- Webserver to get the time from
   time_server_ip = "192.168.1.123"
@@ -67,6 +68,10 @@ USE_IPCAM_EVENT = false
   cam_port = 80
   cam_event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"
   cam_base64_pass = "am9oOmpvaA=="
+
+--------------------------------------
+USE_WIFI_STRENGTH = true
+--------------------------------------
 
 --------------------------------------
 --USE_CYCLIC_DEEPSLEEP = true

@@ -9,6 +9,7 @@ data = data.."&req_time="..string.format("%.2f", re_timer)
 
 -- check if on:receive event already got called (bugfix)
 local got_response = false
+local did_a_retry = false
 
 -- create the connection
 local dnsConn = net.createConnection(net.TCP, 0)
@@ -18,16 +19,17 @@ dnsConn:dns('api.pushingbox.com', function(pushConn, ip)
         if not already_done then
             got_response = true
             if string.find(payload, "HTTP/1.1 200 OK") then
-                -- calculate the time it took to get the response
+                -- calculate the time it took to get the response (for debugging)
                 re_timer = string.format("%.2f", tmr.now()/1000/1000-re_timer)
+                -- print SUCCESS and activate deep sleep
                 print(" -> SUCCESS (" ..re_timer .."s)")
-                -- activate deep sleep
                 print("~~~~~~~~~~~~~~~~~~~~~~~~~")
                 print(" DeepSleeping...")
                 dofile("deepsleep.lc")
             else
                 fail_type = "api_fails"
                 dofile("log_fails.lc")
+
                 print(payload)
                 print("\n -> FAIL\n")
 

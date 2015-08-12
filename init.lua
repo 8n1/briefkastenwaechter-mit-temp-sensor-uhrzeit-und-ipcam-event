@@ -1,18 +1,18 @@
 --------------------------------------------
 -- NodeMCU Briefkastenwächter
---  Version 1.2 - Mit Logging und deutschem Datum
+--  Version 1.3 - Mit Wlan Signalstaerke - Beide wieder vereint
 --------------------------------------------
 
-HEAP_DEBUG = true
+--HEAP_DEBUG = true
 
 -- Load user config
-dofile("config.lua")
+dofile("config.lc")
 
 --------------------------------------
 -- Intro
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(" NodeMCU Briefkastenwaechter  ")
-print("  mit Logging - v1.2          ")
+print("  mit Logging - v1.3          ")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 --------------------------------------
@@ -22,6 +22,12 @@ data = ""
 --------------------------------------
 -- Check logfiles, print/append content to the query string
 dofile("print_logs.lc")
+
+--------------------------------------
+-- Get the wifi strength (it takes a second to get the rssi)
+if USE_WIFI_STRENGTH then
+    dofile("get_rssi.lc")
+end
 
 --------------------------------------
 -- Read the temp sensor but ignore the first reading because it is old
@@ -37,7 +43,7 @@ end
 -- ip check loop 
 -- (also lets the battery, heap and tempsensor recover)
 local wifi_counter = 0
-tmr.alarm(0, 1300, 1, function()
+tmr.alarm(0, 1500, 1, function()
     --------------------------------------
     -- Re-read temperature and append it
     if USE_TEMP_SENSOR then
@@ -73,20 +79,28 @@ tmr.alarm(0, 1300, 1, function()
         ip, ip_time = nil
         
         --------------------------------------
+        -- Print wifi strength
+        if USE_WIFI_STRENGTH then
+            print(" -> RSSI is: "..rssi.."dBm")
+            print(" -> Quality is: "..quality.."%\n")
+            rssi, quality, listap, USE_WIFI_STRENGTH = nil
+        end
+        
+        --------------------------------------
         -- Trigger IP Cam Event
         if USE_IPCAM_EVENT then
-            print(" Triggering IP Cam Event...")
+            print(" Triggering IP Cam Event...\n")
             dofile("trigger_ipcam_event.lc")
             USE_IPCAM_EVENT = nil
         end
         
         --------------------------------------
         -- Load fail_save() function
-        dofile("fail_save_function.lc")
+        dofile("fail_save.lc")
         
         --------------------------------------
         -- Get the date/time (append it) and launch the Pushingbox Scenario / small delay to let the heap recover
-        tmr.alarm(0, 250, 0, function()
+        tmr.alarm(0, 300, 0, function()
             if USE_DATE_TIME then
                 print(" Getting time...")
                 dofile("get_time.lc")
@@ -106,6 +120,7 @@ tmr.alarm(0, 1300, 1, function()
         print("\n Logging fail...")
         fail_type = "wifi_fails"
         dofile("log_fails.lc")
+        fail_type = nil
         
         print("~~~~~~~~~~~~~~~~~~~~~~~~~")
         print(" Forcing DeepSleep...")
