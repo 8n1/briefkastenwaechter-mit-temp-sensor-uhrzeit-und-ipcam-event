@@ -2,7 +2,6 @@
 --------------------------------------
 -- Wifi configuration
 --------------------------------------
-SSID = ""
 --wifi.setmode(wifi.STATION)
 --wifi.sta.config(SSID, "PASSWD")
 --wifi.sta.connect()
@@ -72,6 +71,9 @@ USE_IPCAM_EVENT = false
 --------------------------------------
 USE_WIFI_STRENGTH = true
 --------------------------------------
+  -- SSID of the router
+  SSID = ""
+
 
 --------------------------------------
 --USE_CYCLIC_DEEPSLEEP = true
