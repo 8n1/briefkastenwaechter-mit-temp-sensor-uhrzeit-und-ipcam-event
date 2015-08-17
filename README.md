@@ -63,16 +63,14 @@ Um ein weiter Features zu aktivieren müssen diese auf true gesetzt und die zuge
 * **devid = "xxxxx"**	-> Die DeviceID des Szenarios (Beispiel: "v59BD3A332OEN556") Die Pushingbox DeviceID des Szenarios eingetragen werden das aktviert werden soll wenn die ermittelte Batteriespannung über der ersten Warnspannung liegt. Die Batterie also OK ist.
 
 
-##### USE_TEMP_SENSOR
-Temperaturüberwachung (DS18B20) aktivieren
+##### USE_TEMP_SENSOR -> Temperaturüberwachung (DS18B20) aktivieren
 
 * **tempsensor_pin = 4**
 -> Der Pin an dem der DS18B20 angeschlossen ist entsprechend dem NodeMCU I/O Index. Der I/O Index 4 entspricht dem GPIO2. (GPIO TABLE: https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_en#gpio-new-table--build-20141219-and-later)
 * **tempsensor_precision = 1**
 -> Anzahl der Nachkommastellen auf den der Temperaturwert begrenzt werden soll.
 
-##### USE_BATTERY_CHECK
-Batterieüberwachung aktivieren
+##### USE_BATTERY_CHECK -> Batterieüberwachung aktivieren
 
 * **vref = 0.985**	-> Referenzspannung des internen ADC. (Muss zuerst für jedes Modul ermittelt werden. TODO: Beschreiben wie)
 
@@ -93,8 +91,7 @@ Batterieüberwachung aktivieren
 -> Inhalt von $bat_info$ wenn die zweite Warnspannung unterschritten wurde
 
 
-##### USE_DATE_TIME
-Datum und aktuelle Uhrzeit ermitteln (siehe Quelle 2)
+##### USE_DATE_TIME -> Datum und aktuelle Uhrzeit ermitteln (siehe Quelle 2)
 
 * **time_server_ip = "192.168.1.123"**
 -> Der Webserver von dem die Zeit geholt wird.
@@ -102,16 +99,14 @@ Datum und aktuelle Uhrzeit ermitteln (siehe Quelle 2)
 -> Die Anzahl der Stunden die dazugerechnet werden sollen falls die ermittelte Zeit abweicht. (TODO: Winter/Sommerzeit beachten)
 * **date_translate = true** -> Datum ins Deutsche Format übersetzten (Dec=Dez, Tue=Di,..)
   
-##### USE_IPCAM_EVENT
-Zusätzlich ein Event auf einer Axis IP Camera auslösen
+##### USE_IPCAM_EVENT -> Zusätzlich ein Event auf einer Axis IP Camera auslösen
 
 * **cam_ip = "192.168.1.18"**	-> IP Addresse (Muss ein String sein!)
 * **cam_port = 8001** 	-> Port (Darf kein String sein!)
 * **event_url = "/axis-cgi/io/virtualinput.cgi?action=6:/5000"** 	-> Event URL die aufgerufen werden soll
 * **base64_pass = "am9oOmpvaA=="** 	-> Die base64 codierten Zugangsdaten (benutzer:passwort) für die HTTP Basic Authentifizierung
 
-##### USE_WIFI_STRENGTH
-Wlan Signalstärke ermitteln. (Wird diese Funktion aktiviert dauert das verbinden mit dem AP ca. 2-3 Sekunden länger.)
+##### USE_WIFI_STRENGTH -> Wlan Signalstärke ermitteln. (Wird diese Funktion aktiviert dauert das verbinden mit dem AP ca. 2-3 Sekunden länger.)
 * **SSID = ""** -> SSID vom AccesPoint dessen Signalstärke ermittelt werden soll
 
 
