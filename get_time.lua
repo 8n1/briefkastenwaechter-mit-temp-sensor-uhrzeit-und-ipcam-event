@@ -15,7 +15,7 @@ conn:on("receive", function(conn, payload)
         print(payload)
         print(" -> FAIL\n")
     end
-    -- launch the Pushingbox scenario (small delay to let the heap recover)
+    -- launch the Pushingbox scenario anyway (small delay to let the heap recover)
     tmr.alarm(0, 350, 0, function()
         print(" Launching Pushingbox Scenario...")
         fail_safe("launch_scenario.lc", "req_fails")
@@ -28,3 +28,10 @@ conn:send("HEAD / HTTP/1.1\r\n"
    .."Accept: */*\r\n"
    .."\r\n")
 conn = nil
+
+-- failsave timer
+tmr.alarm(0, 3500, 0, function()
+    print(" Could not connect to: " ..time_server_ip .." ...\n")
+    print(" Trying to launch the Pushingbox Scenario anyway...")
+    fail_safe("launch_scenario.lc", "req_fails")
+end)

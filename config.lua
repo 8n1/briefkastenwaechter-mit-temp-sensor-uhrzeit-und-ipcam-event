@@ -19,6 +19,9 @@ USE_TEMP_SENSOR = true
   -- Decimal places for sensor value
   tempsensor_precision = 1
 
+  -- power supply pin for the sensor - max 12mA!
+  sensor_vcc_pin = 7
+
 --------------------------------------
 USE_BATTERY_CHECK = true
 --------------------------------------
@@ -50,7 +53,7 @@ USE_MULTIPLE_DEVIDS = false  -- depends on USE_BATTERY_CHECK
   warn_devid_2   = "xxxxx"
 
 --------------------------------------
-USE_DATE_TIME = true
+USE_DATE_TIME = false
 --------------------------------------
   -- Webserver to get the time from
   time_server_ip = "192.168.1.123"
@@ -69,14 +72,28 @@ USE_IPCAM_EVENT = false
   cam_base64_pass = "am9oOmpvaA=="
 
 --------------------------------------
-USE_WIFI_STRENGTH = true
+USE_WIFI_STRENGTH = false
 --------------------------------------
   -- SSID of the router
   SSID = ""
 
+--------------------------------------
+USE_CYCLIC_DEEPSLEEP = false -- only works if PIN32(RST) and PIN8(XPD_DCDC aka GPIO16 are connected together
+--------------------------------------
+  -- Wake up every 'sleep_time' minutes (max. 30!) 
+  sleep_time = 5
 
 --------------------------------------
---USE_CYCLIC_DEEPSLEEP = true
+-- FAILSAVE options (worst case running time with std config(3,10): ~50 seconds)
 --------------------------------------
-  -- Wake up every 'sleep_time' minutes
-  --sleep_time = 1
+  max_retries = 3   -- amount of retries (before doing a reset)
+  time_between_requests = 10  -- how long to wait between the requests
+  
+  -- Reset config
+  DO_A_RESET = true  -- if nothing helps do a (single) reset
+  DO_A_RESET_SLEEPTIME = 15   -- seconds to deepsleep before doing a reset (only works if PIN32(RST) and PIN8(XPD_DCDC aka GPIO16 are connected together)
+  RESET_SIGNAL_PIN = 1  -- pin for the reset signal (will be HIGH for 1.5 seconds)
+
+--------------------------------------
+  -- Lgfiles get cleared if this pin is LOW
+  clear_logs_pin = 5

@@ -1,4 +1,4 @@
-# briefkastenwaechter-mit-temp-sensor-uhrzeit-und-ipcam-event
+# nodemcu-briefkastenwaechter
 
 ## Intro
 Aktiviert ein Pushingbox Szenario und übergibt dabei Datum, Uhrzeit und Temperatur. Zusätzlich wird ein Event auf einer Axis IP Kamera ausgelöst.
@@ -26,7 +26,7 @@ Aktiviert ein Pushingbox Szenario und übergibt dabei Datum, Uhrzeit und Tempera
 TODO Schaltplan
 
 ## Unterstzütze ESP Module
-Getestet mit ESP-01 und ESP-12. Sollte aber auf allen laufen.
+Getestet mit ESP-01 und ESP-12. Sollte aber auf allen laufen. 
 Das einzige was man beachten muss ist das um die Batteriespannung messen zu können im besten Fall der ADC Pin TOUT auf dem Board das man verwenden will herausgeführt sein sollte.
 
 

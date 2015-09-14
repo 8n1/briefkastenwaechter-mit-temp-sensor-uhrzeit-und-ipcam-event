@@ -18,3 +18,5 @@ else
     file.write('1')
     file.close()
 end
+
+fail_type = nil

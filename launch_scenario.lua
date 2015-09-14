@@ -9,21 +9,27 @@ data = data.."&req_time="..string.format("%.2f", re_timer)
 
 -- check if on:receive event already got called (bugfix)
 local got_response = false
-local did_a_retry = false
 
 -- create the connection
 local dnsConn = net.createConnection(net.TCP, 0)
 -- first get the ip...
 dnsConn:dns('api.pushingbox.com', function(pushConn, ip) 
     pushConn:on("receive", function(conn, payload)
-        if not already_done then
+        if not got_response then
             got_response = true
             if string.find(payload, "HTTP/1.1 200 OK") then
+                -- stop the failsafe timer
+                tmr.stop(2)
                 -- calculate the time it took to get the response (for debugging)
                 re_timer = string.format("%.2f", tmr.now()/1000/1000-re_timer)
-                -- print SUCCESS and activate deep sleep
-                print(" -> SUCCESS (" ..re_timer .."s)")
+                -- print SUCCESS
+                print(" -> SUCCESS (" ..re_timer .."s)\n")
+
+                -- remove the did_a_reset flag(file)
+                file.remove("did_a_reset")
+                
                 print("~~~~~~~~~~~~~~~~~~~~~~~~~")
+                -- activate deep sleep
                 print(" DeepSleeping...")
                 dofile("deepsleep.lc")
             else
@@ -32,18 +38,6 @@ dnsConn:dns('api.pushingbox.com', function(pushConn, ip)
 
                 print(payload)
                 print("\n -> FAIL\n")
-
-                if not did_a_retry then
-                    did_a_retry = true
-                    print(" Retrying to launch Scenario...")
-                    fail_safe("launch_scenario.lc", "req_fails")
-                else
-                    print("~~~~~~~~~~~~~~~~~~~~~~~~~")
-                    print(" Forcing DeepSleep after Pushingbox API Fail #2...")
-                    fail_type = "api_fails"
-                    dofile("log_fails.lc")
-                    dofile("deepsleep.lc")
-                end
             end
         end
     end)
