@@ -17,9 +17,6 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 --------------------------------------
 -- IO Configuration
 --------------------------------------
--- power up the temp sensor
-gpio.mode(sensor_vcc_pin, gpio.OUTPUT)
-gpio.write(sensor_vcc_pin, 1)
 -- setup the reset signal pin
 --gpio.mode(RESET_SIGNAL_PIN, gpio.OUTPUT)
 -- setup the clear_logs_pin as INPUT and activate the PULLUP
