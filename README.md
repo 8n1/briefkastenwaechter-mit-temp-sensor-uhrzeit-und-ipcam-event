@@ -5,10 +5,6 @@
 ...
 
 
-## Intro
-...
-
-
 ## Letztes Update: (15 Sep 2015)
 * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
 * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
