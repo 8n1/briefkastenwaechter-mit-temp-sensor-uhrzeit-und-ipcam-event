@@ -1,11 +1,12 @@
-# nodemcu-briefkastenwaechter
+## NodeMCU - Reset Briefkastenwaechter
+
 
 ## Intro
-Aktiviert ein Pushingbox Szenario und übergibt dabei Datum, Uhrzeit und Temperatur. Zusätzlich wird ein Event auf einer Axis IP Kamera ausgelöst.
+...
 
 
 ## Ablauf/Features:
-* Verbindet sich nach einem Reset oder dem anlegen der Batteriespannung automatisch mit dem gespeicheretn Wlan Netzwerk
+* Verbindet sich nach einem Reset oder dem anlegen der Batteriespannung automatisch mit dem gespeicherten Wlan Netzwerk
 
 
 * Ermittelt die Batteriespannung (Spannungsteiler und interner ADC) (**optional**)
@@ -39,7 +40,7 @@ Das einzige was man beachten muss ist das um die Batteriespannung messen zu kön
 
 
 ### Bugs:
-* Winter/Sommerzeit wird nicht berücksichtigt.
+* Winter/Sommerzeit wird noch nicht berücksichtigt.
 * In ganz seltenen Fällen kann es passieren das kein Request verschickt wird.
 * "Zombie mode" - Wird als Firmware die 0.9.5 verwendet kann es vorkommen das der ESP nach dem node.dlseep() nicht ordentlich bootet. 
 
@@ -50,7 +51,7 @@ Die gesamte Konfiguration erfolgt über die config.lua. Es muss nur diese Datei 
 
 Was mindestens definiert werden muss sind die Wlan Zugangsdaten und die Pushingbox Device ID des Szenarios das aktiviert werden soll. 
 
-Um ein weiter Features zu aktivieren müssen diese auf true gesetzt und die zugehörigen Variablen angepasst werden.
+Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehörigen Variablen angepasst werden.
 
 
 ##### Wifi configuration
@@ -75,7 +76,7 @@ Um ein weiter Features zu aktivieren müssen diese auf true gesetzt und die zuge
 * **vref = 0.985**	-> Referenzspannung des internen ADC. (Muss zuerst für jedes Modul ermittelt werden. TODO: Beschreiben wie)
 
 * **r1 	= 33000**
-* **r2 	= 10000**   -> Widerstandswerte für den Spannungsteiler (r1, r2). Die Werte sind akutell so ausgelegt dass sie  konfiguration ist auf einen Lipo Akku ausgelegt (ca. 3.0V(leer) - 4.2V(voll)).
+* **r2 	= 10000**   -> Widerstandswerte für den Spannungsteiler (r1, r2). Die Werte sind akutell so ausgelegt dass es möglich ist den gesamten Spannungsbereich eines Einzelligen Lipo Akkus zu erfassen (ca. 3.0V(leer) - 4.2V(voll)).
 
 * **bat_info 	= "OK"**
 -> Eine zusätzliche Info die in die Nachricht die man bekommt mit $bat_info$ eingebaut werden kann. Standardmäßig wird wenn mit der Batterie alles in Ordnung ist ein OK eingebaut. Also die erste Warnspannung noch nicht unterschritten wurde.

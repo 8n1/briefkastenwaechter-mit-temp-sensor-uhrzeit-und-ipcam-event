@@ -1,10 +1,9 @@
 
--- Fail save function
--- tries to send a request a given amount of times and logs every failed attempt
-
 --------------------------------------
 -- Fail-save timer for the http request
+--  - tries to send a request a given amount of times and logs every failed attempt
 --------------------------------------
+
 function fail_safe(script_to_call, logfile_to_use)
 
     -- call the given script
@@ -33,7 +32,7 @@ function fail_safe(script_to_call, logfile_to_use)
             if DO_A_RESET then
                 if not file.open("did_a_reset", "r") then
                     file.open("did_a_reset", "w+") file.close()
-                    print(" Doing a reset and logging it (also activating the reset signal)...")
+                    print(" Doing a reset in 1.5 seconds and logging it (also activating the reset signal)...")
                     
                     -- log the resets
                     fail_type = "reset" 
@@ -45,8 +44,15 @@ function fail_safe(script_to_call, logfile_to_use)
 
                     -- wait a second to let the tiny reset the timer
                     tmr.delay(1500*1000)
-                    print("\n Waking up in " ..DO_A_RESET_SLEEPTIME .." seconds...\n")
-                    node.dsleep(DO_A_RESET_SLEEPTIME*1000*1000, 1)
+
+                    -- software reset or deepsleep
+                    if DO_A_SOFT_RESET then
+                        print("\n Doing a reset...\n")
+                        node.restart()
+                    else
+                        print("\n Waking up in " ..DO_A_RESET_SLEEPTIME .." seconds...\n")
+                        node.dsleep(DO_A_RESET_SLEEPTIME*1000*1000, 1)
+                    end
                 else
                     print(" Already did a reset. Logging and DeepSleeping...")
                     file.remove("did_a_reset")

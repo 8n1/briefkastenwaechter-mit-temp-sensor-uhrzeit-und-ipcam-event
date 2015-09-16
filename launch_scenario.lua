@@ -14,6 +14,7 @@ local got_response = false
 local dnsConn = net.createConnection(net.TCP, 0)
 -- first get the ip...
 dnsConn:dns('api.pushingbox.com', function(pushConn, ip) 
+    -- parse the response
     pushConn:on("receive", function(conn, payload)
         if not got_response then
             got_response = true

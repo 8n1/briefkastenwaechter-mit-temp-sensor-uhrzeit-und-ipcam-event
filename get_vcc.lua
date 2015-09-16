@@ -4,7 +4,7 @@
 local adc_value = adc.read(0)
 -- voltage divider ratio
 local volt_div = (r1+r2)/r2
--- valculate the battery voltage
+-- calculate the battery voltage
 vin = vref/1024 * adc_value * volt_div
 
 -- based on the calculated voltage decide wich scenario to launch
