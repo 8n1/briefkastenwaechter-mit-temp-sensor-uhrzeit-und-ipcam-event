@@ -93,5 +93,5 @@ USE_CYCLIC_DEEPSLEEP = false -- only works if PIN32(RST) and PIN8(XPD_DCDC aka G
   RESET_SIGNAL_PIN = 1  -- pin for the reset signal (will be HIGH for 1.5 seconds)
 
 --------------------------------------
-  -- Lgfiles get cleared if this pin is LOW
+  -- Logfiles get cleared if this pin is LOW
   clear_logs_pin = 5
