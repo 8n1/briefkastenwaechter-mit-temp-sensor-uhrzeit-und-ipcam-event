@@ -1,8 +1,10 @@
 # nodemcu-briefkastenwaechter
 
-## Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~50%)
+## Achtung
+###README wird noch überarbeitet (Aktueller Fortschritt: ~50%)
 
 
+...
 ## Intro
 ...
 
