@@ -12,7 +12,7 @@
 devid = "xxxxx"
 
 --------------------------------------
-USE_TEMP_SENSOR = true
+USE_TEMP_SENSOR = false
 --------------------------------------
   -- ds18b20 data pin (nodemcu I/O Index)
   tempsensor_pin = 3
@@ -20,7 +20,7 @@ USE_TEMP_SENSOR = true
   tempsensor_precision = 1
 
 --------------------------------------
-USE_BATTERY_CHECK = true
+USE_BATTERY_CHECK = false
 --------------------------------------
   -- ADC reference voltage (adjust for your esp module)
   vref = 0.985
@@ -50,7 +50,7 @@ USE_MULTIPLE_DEVIDS = false  -- depends on USE_BATTERY_CHECK
   warn_devid_2   = "xxxxx"
 
 --------------------------------------
-USE_DATE_TIME = true
+USE_DATE_TIME = false
 --------------------------------------
   -- Webserver to get the time from
   time_server_ip = "192.168.1.123"
@@ -69,13 +69,13 @@ USE_IPCAM_EVENT = false
   cam_base64_pass = "am9oOmpvaA=="
 
 --------------------------------------
-USE_WIFI_STRENGTH = true
+USE_WIFI_STRENGTH = false
 --------------------------------------
   -- SSID of the router
   SSID = ""
 
 --------------------------------------
-USE_CYCLIC_DEEPSLEEP = true -- only works if PIN32(RST) and PIN8(XPD_DCDC aka GPIO16 are connected together
+USE_CYCLIC_DEEPSLEEP = false -- only works if PIN32(RST) and PIN8(XPD_DCDC aka GPIO16 are connected together
 --------------------------------------
   -- Wake up every 'sleep_time' minutes (max. 30!) 
   sleep_time = 5
