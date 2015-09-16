@@ -9,7 +9,7 @@
 --------------------------------------
 -- Pushingbox device id
 --------------------------------------
-devid = "vC11E2C1163D317A"
+devid = "xxxxx"
 
 --------------------------------------
 USE_TEMP_SENSOR = true
@@ -87,8 +87,8 @@ USE_CYCLIC_DEEPSLEEP = true -- only works if PIN32(RST) and PIN8(XPD_DCDC aka GP
   time_between_requests = 10  -- how long to wait between the requests
   
   -- Reset config
-  DO_A_RESET = true  -- if nothing helps do a (single) reset
-  DO_A_SOFT_RESET = true -- 
+  DO_A_RESET = true  -- do a (single) reset
+  DO_A_SOFT_RESET = true -- do not deepsleep, do a soft-reset instead
   DO_A_RESET_SLEEPTIME = 15   -- seconds to deepsleep before doing a reset (only works if PIN32(RST) and PIN8(XPD_DCDC aka GPIO16 are connected together)
   RESET_SIGNAL_PIN = 1  -- pin for the reset signal (will be HIGH for 1.5 seconds)
 
