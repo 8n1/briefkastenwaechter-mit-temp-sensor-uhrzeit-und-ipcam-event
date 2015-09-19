@@ -5,7 +5,7 @@
 ...
 
 
-## Letzte Updates: (19 Sep 2015)
+## Letzte Updates:
 * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
 * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
 * Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
