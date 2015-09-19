@@ -1,15 +1,16 @@
 # nodemcu-briefkastenwaechter
 
 ...
-### Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~50%)
+### Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~70%)
 ...
 
 
-## Letztes Update: (15 Sep 2015)
+## Letztes größere Update: (15 Sep 2015)
 * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
 * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
-* Reset Signal für einen externen µc (Um den Timer zurückzusetzen)
+* Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
 * Neue Firmware (Beseitigt verschiedenste Probleme die ich mit den "offiziellen" Releases hatte)
+* **NEU** Ausschalt Signal (Um einem externen µC das abschalten des Spannungsregler zu signalisieren)
 
 ## Ablauf/Features:
 * Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk
