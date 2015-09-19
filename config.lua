@@ -81,6 +81,12 @@ USE_CYCLIC_DEEPSLEEP = false -- only works if PIN32(RST) and PIN8(XPD_DCDC aka G
   sleep_time = 5
 
 --------------------------------------
+USE_VREG_SHUTDOWN = true
+--------------------------------------
+  -- pin for the shutdown signal
+  vreg_shutdown_pin = 2
+  
+--------------------------------------
 -- FAILSAVE options (worst case running time with std config(3,10): ~50 seconds)
 --------------------------------------
   max_retries = 3   -- amount of retries (before doing a reset)
