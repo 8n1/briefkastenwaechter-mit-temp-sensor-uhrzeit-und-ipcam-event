@@ -120,6 +120,10 @@ Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehö
 ##### USE_WIFI_STRENGTH -> Wlan Signalstärke ermitteln. (Wird diese Funktion aktiviert dauert das verbinden mit dem AP ca. 2-3 Sekunden länger.)
 * **SSID = ""** -> SSID vom AccesPoint dessen Signalstärke ermittelt werden soll
 
+#### USE_VREG_SHUTDOWN  -> Kann genutzt werden um einem externen µc das abschalten des Spannungsreglers zu signalisieren
+  vreg_shutdown_pin = 2   -> Pin für das Signal (Wird vom ESP wenn er "fertig" ist für 1 Sekunde auf HIGH gesetzt)
+  
+
 #### FAILSAVE options
 
 * **max_retries = 3** 	-> Wie oft versucht wird den Request hintereinander zu versenden
