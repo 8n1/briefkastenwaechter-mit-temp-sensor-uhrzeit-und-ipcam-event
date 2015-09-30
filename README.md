@@ -28,7 +28,7 @@
 * Schickt eine Benachrichtigung über Pushingbox. (z.B. Pushnachricht, E-mail,...)
   Die gesammelten Informationen (Uhrzeit, Temperatur, Signalstärke, ..) werden mit an Pushingbox übertragen und können in die Nachricht die von Pushingbox an euch bzw. den hinterlegten Service (Verfügbare Services: http://i.imgur.com/xr65rBj.png) verschickt wird nach belieben eingebaut werden.
 
-* **NEU:** Wenn das aktivieren des Szenarios aus irgend einem Grund (z.b. Server kurzzeitig nicht erreichbar, ...) nicht klappt, wird es einfach eine beliebig oft weiter versucht. Wie oft und ob zusätzlich noch ein Reset (je nach konfiguration auch mit variabler Schlafzeit dazwischen) gemacht werden soll kann in der config.lua festgelegt werden. 
+* **NEU:** Wenn das aktivieren des Szenarios aus irgend einem Grund (z.b. Server kurzzeitig nicht erreichbar, ...) nicht klappt, wird es einfach beliebig oft weiter versucht. Wie oft und ob zusätzlich noch ein Reset (je nach konfiguration auch mit variabler Schlafzeit dazwischen) gemacht werden soll kann in der config.lua festgelegt werden. 
 
 
 * Wenn das versenden der Nachricht geklappt hat oder alle Versuche (samt optionalem Reset) aufgebraucht sind legt sich der ESP wieder schlafen (DeepSleep).
