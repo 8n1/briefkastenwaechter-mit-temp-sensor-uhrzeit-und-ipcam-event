@@ -12,22 +12,23 @@
 * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
 * Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
 * Neue Firmware (Beseitigt verschiedenste Probleme die ich mit den "offiziellen" Releases hatte)
-* Ausschalt Signal (Um einem externen µC das abschalten des Spannungsregler zu signalisieren)
+* Ausschalt Signal (Um einem externen µC das abschalten der Spannungquelle zu signalisieren)
+
 
 ## Ablauf/Features:
-* Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk
+* Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk und holt sich per DHCP eine IP.
 
 
-* Ermittelt die Batteriespannung (Spannungsteiler und interner ADC) (**optional**)
-* Ermittelt die akutelle Temperatur (DS18B20) (**optional**)
+* Ermittelt die aktuelle Batteriespannung (Spannungsteiler und interner ADC) (**optional**)
+* Liest die akutelle Temperatur aus einem DS18B20 aus (**optional**)
 * Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver  (**optional**)
 * Löst ein frei definierbares Event auf einer mittels HTTP Basic Authentifizierung gesicherten Axis IP Cam aus. Schickt z.B. ein Foto. (**optional**)
 
 
-* Aktiviert ein Pushingbox Szenario entsprechend der Konfiguration.
+* Schickt eine Benachrichtigung über Pushingbox. (z.B. Pushnachricht, E-mail,...)
   Die gesammelten Informationen (Uhrzeit, Temperatur, Signalstärke, ..) werden mit an Pushingbox übertragen und können in die Nachricht die von Pushingbox an euch bzw. den hinterlegten Service (Verfügbare Services: http://i.imgur.com/xr65rBj.png) verschickt wird nach belieben eingebaut werden.
 
-* **NEU:** Wenn das aktivieren des Szenarios aus irgend einem Grund (z.b. Server kurzzeitig nicht erreichbar, ...) nicht klappt, wird es einfach beliebig oft weiter versucht. Wie oft und ob zusätzlich noch ein Reset (je nach konfiguration auch mit variabler Schlafzeit dazwischen) gemacht werden soll kann in der config.lua festgelegt werden. 
+* **NEU:** Wenn das aktivieren des Szenarios aus irgend einem Grund (z.b. Server kurzzeitig nicht erreichbar, ...) nicht klappt, wird es einfach eine beliebig oft weiter versucht. Wie oft und ob zusätzlich noch ein Reset (je nach konfiguration auch mit variabler Schlafzeit dazwischen) gemacht werden soll kann in der config.lua festgelegt werden. 
 
 
 * Wenn das versenden der Nachricht geklappt hat oder alle Versuche (samt optionalem Reset) aufgebraucht sind legt sich der ESP wieder schlafen (DeepSleep).
@@ -121,7 +122,7 @@ Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehö
 * **SSID = ""** -> SSID vom AccesPoint dessen Signalstärke ermittelt werden soll
 
 ##### USE_VREG_SHUTDOWN  -> Kann genutzt werden um einem externen µc das abschalten des Spannungsreglers zu signalisieren
-  vreg_shutdown_pin = 2		-> Pin für das Signal (Wird vom ESP wenn er "fertig" ist für 1 Sekunde auf HIGH gesetzt)
+  vreg_shutdown_pin = 2		-> Pin für das Ausschalt Signal (Wird vom ESP wenn er "fertig" ist für 1 Sekunde auf HIGH gesetzt)
   
 
 #### FAILSAVE options
