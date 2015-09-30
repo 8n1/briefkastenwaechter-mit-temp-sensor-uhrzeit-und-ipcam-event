@@ -1,16 +1,18 @@
 # nodemcu-briefkastenwaechter
 
 ...
-### Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~80%)
+### Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~85%)
 ...
 
 
 ## Letzte Updates:
+* 30.Sep 2015 - Datum wird zerlegt an Pushingbox übertragen, somit sind auch neue Variablen verfügbar($wd,$d$,$m$,$y$)
+* 15 Sep 2015:
 * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
 * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
 * Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
 * Neue Firmware (Beseitigt verschiedenste Probleme die ich mit den "offiziellen" Releases hatte)
-* Ausschalt Signal (Um einem externen µC das abschalten der Stromversorgung zu signalisieren)
+* Ausschalt Signal (Um einem externen µC das abschalten des Spannungsregler zu signalisieren)
 
 ## Ablauf/Features:
 * Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk
@@ -37,9 +39,7 @@
 TODO Schaltplan
 
 ## Unterstzütze ESP Module
-Getestet mit ESP-01, ESP-07 und ESP-12. Sollte aber auf allen laufen. 
-Möchte man die Batteriespannung messen braucht man aber zugang zum ADC Pin "TOUT".
-...
+Alle.
 
 
 ## Geplante Erweiterungen:
@@ -121,7 +121,7 @@ Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehö
 * **SSID = ""** -> SSID vom AccesPoint dessen Signalstärke ermittelt werden soll
 
 ##### USE_VREG_SHUTDOWN  -> Kann genutzt werden um einem externen µc das abschalten des Spannungsreglers zu signalisieren
-  vreg_shutdown_pin = 2 -> Pin für das Signal (Wird vom ESP wenn er "fertig" ist für 1 Sekunde auf HIGH gesetzt)
+  vreg_shutdown_pin = 2		-> Pin für das Signal (Wird vom ESP wenn er "fertig" ist für 1 Sekunde auf HIGH gesetzt)
   
 
 #### FAILSAVE options
@@ -140,7 +140,7 @@ Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehö
 
 ## Installation:
 
-* NodeMCU Firmware flashen (Am besten eine mit )
+* NodeMCU Firmware flashen
 * Pushingbox Account erstellen, Service adden und Szenario erstellen
     Auf pushingbox.com gehen und anmelden. Dann auf "My Services" klicken und einen Service "adden". Dann unter "My Scenarios" ein neues Scenario erstellen und über "Add an Action" die Service auswählen über die man Benachrichtigt werden will. Nach dem klick auf "Add an action with this service" erscheint ein Eingabe-Fenster(Formular) mit dem die Nachricht die an den Service verschickt wird definiert werden muss. Durch die integration von Variablen lässt sich diese auch dynamisch gestalten.
 * config.lua anpassen -> Konfiguration
@@ -169,13 +169,18 @@ Folgende Variablen lassen sich je nach konfiguration (aktivierte Features in der
 * **$temperatur$**	-	Aktuelle Temperatur: 0.0 (Die Anzahl der Nachkommstellen ist abhängig von der Variable 'precision')
 
 ##### Nur wenn USE_DATE_TIME
-* **$date$**		-	Datum: Mi 15 Jul 2015
+* **$date$**		-	Komplettes Datum: Mi, 15 Jul 2015
+* **$wd$**			-	Wochentag: Mi
+* **$d$**			-	Tag: 15
+* **$m$**			-	Monat: Jul
+* **$y$**			-	Jahr: 2015
+
 * **$time$**		-	Uhrzeit: 00:00:00
 * **$time_n$**		-	Uhrzeit: 00:00
 
 
 .:.
-#### Ein schönes Beispiel Projekt findet man hier:
+#### Ein Beispiel Projekt findet man hier:
 RasPiPo(st) 2 - Der Briefkasten verschickt E-Mails - http://www.forum-raspberrypi.de/Thread-hardware-automatisierung-raspipo-st-2-der-briefkasten-verschickt-e-mails?pid=159108#pid159108
 
 .:.
