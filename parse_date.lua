@@ -4,7 +4,7 @@
 
         ------------------------------------------------------------------------------------------------------------
         -- Extract the (webservers) timezone
-        timezone = string.sub(res, -3)
+        --timezone = string.sub(res, -3)
         ------------------------------------------------------------------------------------------------------------
 
 		------------------------------------------------------------------------------------------------------------
@@ -27,7 +27,7 @@
         if date_translate then
             weekdays_en = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
             weekdays_de = { "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So" }
-            -- iterate over weekdays array, replace match
+            -- iterate over weekdays_en array, replace match
             for c, w in pairs(weekdays_en) do
                 if w == weekday then
                     weekday = weekdays_de[c]
@@ -43,7 +43,7 @@
         if date_translate then
             months_en = { "Jan", "Mar", "May", "Oct", "Dec" }
             months_de = { "Jan", "Mar", "Mai", "Okt", "Dez" }
-            -- iterate over months array, replace match
+            -- iterate over months_en array, replace match
             for c, m in pairs(months_en) do
                 if m == month then
                     month = months_de[c]
@@ -62,7 +62,7 @@
         -- sanitize/replace whitespaces and append the date to the Query String
         date = date:gsub("% ", "+")
         ---------------------------
-        data = data.."&date="..date
+        data = data.."&date="..date.."&wd="..weekday.."&d="..day.."&m="..month.."&y="..year
         
         ------------------------------------------------------
         -- clean up
@@ -98,7 +98,7 @@
         print(" -> Time: " ..time_n.. "\n")
         
         ------------------------------------------------------
-        -- Append the date to the Query String
+        -- Append the time to the Query String
         data = data.."&time="..time.."&time_n="..time_n
         
         ------------------------------------------------------
