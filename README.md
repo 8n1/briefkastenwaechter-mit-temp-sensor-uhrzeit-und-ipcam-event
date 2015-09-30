@@ -6,7 +6,7 @@
 
 
 ## Letzte Updates:
-* 30.Sep 2015 - Datum wird zerlegt an Pushingbox übertragen, somit sind auch neue Variablen verfügbar($wd,$d$,$m$,$y$)
+* 30.Sep 2015 - Datum wird zerlegt an Pushingbox übertragen, somit neue Variablen verfügbar($wd,$d$,$m$,$y$)
 * 15 Sep 2015:
 * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
 * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
