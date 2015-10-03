@@ -14,15 +14,18 @@
  * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
  * Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
  * Neue Firmware (Beseitigt verschiedenste Probleme die ich mit den "offiziellen" Releases hatte)
- * Ausschalt Signal (Um einem externen µC das abschalten der Spannungquelle zu signalisieren)
+ * Ausschalt Signal (Um einem externen µC das abschalten der Stromversorgung zu signalisieren)
 
 
 ### Ablauf/Features:
 * Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk und holt sich per DHCP eine IP.
 
 * Ermittelt die aktuelle Batteriespannung (Spannungsteiler und interner ADC) (**optional**)
+
 * Liest die akutelle Temperatur aus einem DS18B20 aus (**optional**
+
 * Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver  (**optional**)
+
 * Löst ein frei definierbares Event auf einer mittels HTTP Basic Authentifizierung gesicherten Axis IP Cam aus. Schickt z.B. ein Foto. (**optional**)  
 
 * Schickt eine Benachrichtigung über Pushingbox. (z.B. Pushnachricht, E-mail,...)
