@@ -6,8 +6,8 @@
 
 
 ## Letzte Updates:
-* 30.Sep 2015 - Datum wird zerlegt an Pushingbox übertragen, somit neue Variablen verfügbar($wd,$d$,$m$,$y$)
-* 15 Sep 2015:
+* **30.Sep 2015** - Datum wird zerlegt an Pushingbox übertragen, somit neue Variablen verfügbar($wd,$d$,$m$,$y$)
+* **15 Sep 2015**:
 * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
 * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
 * Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
