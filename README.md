@@ -21,10 +21,10 @@
 **1.** Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk und holt sich per DHCP eine IP.
 
 
-2. Ermittelt die aktuelle Batteriespannung (Spannungsteiler und interner ADC) (optional)
-3. Liest die akutelle Temperatur aus einem DS18B20 aus (optional)
-4. Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver (optional)
-5. Löst ein frei definierbares Event auf einer mittels HTTP Basic Authentifizierung gesicherten Axis IP Cam aus. Schickt z.B. ein Foto. (optional)**
+**2.** Ermittelt die aktuelle Batteriespannung (Spannungsteiler und interner ADC) (**optional**)
+**3.** Liest die akutelle Temperatur aus einem DS18B20 aus (**optional**)
+**4.** Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver (**optional**)
+**5.** Löst ein frei definierbares Event auf einer mittels HTTP Basic Authentifizierung gesicherten Axis IP Cam aus. Schickt z.B. ein Foto. (**optional**)
 
 
 **6.** Schickt eine Benachrichtigung über Pushingbox. (z.B. Pushnachricht, E-mail,...) Die gesammelten Informationen (Uhrzeit, Temperatur, Signalstärke, ..) werden mit an Pushingbox übertragen und können in die Nachricht die von Pushingbox an euch bzw. den hinterlegten Service (Verfügbare Services: http://i.imgur.com/xr65rBj.png) verschickt wird nach belieben eingebaut werden.
