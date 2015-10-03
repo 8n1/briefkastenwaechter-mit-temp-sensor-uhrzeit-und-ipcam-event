@@ -21,9 +21,9 @@
 * Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk und holt sich per DHCP eine IP.
 
 
-* Ermittelt die aktuelle Batteriespannung (Spannungsteiler und interner ADC) (**optional**)
-* Liest die akutelle Temperatur aus einem DS18B20 aus (**optional**)
-* Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver  (**optional**)
+* Ermittelt die aktuelle Batteriespannung (Spannungsteiler und interner ADC) (**optional**)  
+* Liest die akutelle Temperatur aus einem DS18B20 aus (**optional**)  
+* Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver  (**optional**)  
 * Löst ein frei definierbares Event auf einer mittels HTTP Basic Authentifizierung gesicherten Axis IP Cam aus. Schickt z.B. ein Foto. (**optional**)
 
 
@@ -61,10 +61,8 @@ Alle.
 
 
 ## Konfiguration: config.lua
-Die gesamte Konfiguration erfolgt über die config.lua. Es muss nur diese Datei angepasst werden.
-
-Was mindestens definiert werden muss sind die Wlan Zugangsdaten und die Pushingbox Device ID des Szenarios das aktiviert werden soll. 
-
+Die gesamte Konfiguration erfolgt über die config.lua. Es muss nur diese Datei angepasst werden.  
+Was mindestens definiert werden muss sind die Wlan Zugangsdaten und die Pushingbox Device ID des Szenarios das aktiviert werden soll.  
 Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehörigen Variablen angepasst werden.
 
 
