@@ -1,22 +1,23 @@
 # nodemcu-briefkastenwaechter
 
 ...
-### Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~85%)
+#### Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~85%)
 ...
 
 
-## Letzte Updates:
-* **30.Sep 2015**
-* Datum wird zerlegt an Pushingbox übertragen, somit neue Variablen verfügbar($wd,$d$,$m$,$y$)
-* **15 Sep 2015**
-* Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
-* Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
-* Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
-* Neue Firmware (Beseitigt verschiedenste Probleme die ich mit den "offiziellen" Releases hatte)
-* Ausschalt Signal (Um einem externen µC das abschalten der Spannungquelle zu signalisieren)
+### Letzte Updates:
+**30.Sep 2015**
+ * Datum wird zerlegt an Pushingbox übertragen, somit neue Variablen verfügbar($wd,$d$,$m$,$y$)
+
+**15 Sep 2015**
+ * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
+ * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
+ * Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
+ * Neue Firmware (Beseitigt verschiedenste Probleme die ich mit den "offiziellen" Releases hatte)
+ * Ausschalt Signal (Um einem externen µC das abschalten der Spannungquelle zu signalisieren)
 
 
-## Ablauf/Features:
+### Ablauf/Features:
 * Verbindet sich nach einem Reset (oder dem anlegen der Versorgungsspannung) automatisch mit dem gespeicherten Wlan Netzwerk und holt sich per DHCP eine IP.
 
 
