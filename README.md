@@ -1,10 +1,5 @@
 # nodemcu-briefkastenwaechter
 
-...
-#### Achtung: README wird noch überarbeitet (Aktueller Fortschritt: ~85%)
-...
-
-
 ### Letzte Updates:
 **30.Sep 2015**
  * Datum wird zerlegt an Pushingbox übertragen, somit neue Variablen verfügbar($wd,$d$,$m$,$y$)
@@ -12,7 +7,7 @@
 **15 Sep 2015**
  * Fehlererkennung überarbeitet (Nachrichten werden jetzt sehr viel zuverlässiger versendet)
  * Logging verbessert (Logfiles können jetzt auch zurückgesetzt werden)
- * Reset Signal (Um einem externen µc das zurücksetzen des "failsave" Timers zu signalisieren)
+ * Reset Signal (Um einem externen µc das zurücksetzen des "Notfall" Timers zu signalisieren)
  * Neue Firmware (Beseitigt verschiedenste Probleme die ich mit den "offiziellen" Releases hatte)
  * Ausschalt Signal (Um einem externen µC das abschalten der Stromversorgung zu signalisieren)
 
@@ -22,36 +17,41 @@
 
 
 * Ermittelt die aktuelle Batteriespannung (Spannungsteiler und interner ADC) (**optional**)
+* Ermittelt die WLAN Signalstärke (**optional**)
 * Liest die akutelle Temperatur aus einem DS18B20 aus (**optional**)
-* Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver (**optional**)
+* Holt sich die aktuelle Uhrzeit + Datum von einem beliebigen Webserver (Apache/RaspberryPi) (**optional**)
 * Löst ein frei definierbares Event auf einer mittels HTTP Basic Authentifizierung gesicherten Axis IP Cam aus. Schickt z.B. ein Foto. (**optional**)
 
 
-* Schickt eine Benachrichtigung über Pushingbox. (z.B. Pushnachricht, E-mail,...) Die gesammelten Informationen (Uhrzeit, Temperatur, Signalstärke, ..) werden mit an Pushingbox übertragen und können in die Nachricht die von Pushingbox an euch bzw. den hinterlegten Service (Verfügbare Services: http://i.imgur.com/xr65rBj.png) verschickt wird nach belieben eingebaut werden.
+* Aktiviert ein Pushingbox Sceanrio und übergibt dabei alle gesammelten Informationen (Batteriepsannung, Signalstärke Temperatur, Uhrzeit, ..) in Form von Variablen. Diese Variablen können dann in die Nachricht die von Pushingbox an euch bzw. den hinterlegten Service (Verfügbare Services: http://i.imgur.com/xr65rBj.png) verschickt wird nach belieben eingebaut werden.
 
 
 * NEU: Wenn das aktivieren des Szenarios aus irgend einem Grund (z.b. Server kurzzeitig nicht erreichbar, ...) nicht klappt, wird es einfach beliebig oft weiter versucht. Wie oft und ob zusätzlich noch ein Reset (je nach konfiguration auch mit variabler Schlafzeit dazwischen) gemacht werden soll kann in der config.lua festgelegt werden.
 
 
-* Wenn das versenden der Nachricht geklappt hat oder alle Versuche (samt optionalem Reset) aufgebraucht sind legt sich der ESP wieder schlafen (DeepSleep).
+* Wenn das versenden der Nachricht geklappt hat oder alle Versuche (samt optionalem Reset) aufgebraucht sind legt sich der ESP wieder schlafen (DeepSleep) oder signalisiert einem externen µc(ATtiny) das abschalten der Stromversorgung.
 
 
 * Mit einem Reset wiederholt sich die ganze Prozedur.
 
 
 ## Hardware
-TODO Schaltplan
+Das ganze kann auf mindestens 2 unterschiedliche Arten eingesetzt werden
+1. Minimal Setup - ESP Modul, Schalter, Spannungsregler
+2. Full featured - ESP Modul, Schalter, Spannungsregler mit Enable/Shutdown Pin, ATtiny25/42/85 für das "Power Management", Spannungsteiler, Temperatur Sensor, (Raspberrypi + Apache), (AXIS IP Kamera)
+
 
 ## Unterstzütze ESP Module
-Alle.
+1. Minimal Setup - Alle.
+2. Full Featured Setup - ESP-12
 
 
 ## Geplante Erweiterungen:
 - [x] Batterieüberwachung mittels internem ADC (**FERTIG - 15.07.2015**)
 - [ ] Kleines Skript (Makefile) um beuqem die Firmware flashen und automatisch alle Lua Skripte auf den ESP hochzuladen zu können
-- [ ] Konfiguration und Test über eine einfache Weboberfläche (nicht dringend)
-- [ ] Verbindung mit dem WLAN nicht mehr per Timer Alarm sonder per wifi.sta.eventMonReg() (nicht dringend)
-- [ ] Alternativen für Pushingbox (nicht dringend)
+- [ ] Konfiguration und Test über eine einfache Weboberfläche
+- [ ] Verbindung mit dem WLAN nicht mehr per Timer Alarm sonder per wifi.sta.eventMonReg()
+- [ ] Alternativen für Pushingbox
 
 
 ### Bugs:
@@ -62,8 +62,10 @@ Alle.
 
 
 ## Konfiguration: config.lua
-Die gesamte Konfiguration erfolgt über die config.lua. Es muss nur diese Datei angepasst werden.  
-Was mindestens definiert werden muss sind die Wlan Zugangsdaten und die Pushingbox Device ID des Szenarios das aktiviert werden soll.  
+Die gesamte Konfiguration erfolgt über die config.lua. **Es muss nur diese Datei angepasst werden.**
+
+Was mindestens konfiguriert werden muss sind die Wlan Zugangsdaten und die Pushingbox Device ID des Szenarios das aktiviert werden soll.  
+
 Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehörigen Variablen angepasst werden.
 
 
@@ -144,9 +146,9 @@ Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehö
 
 * NodeMCU Firmware flashen
 * Pushingbox Account erstellen, Service adden und Szenario erstellen
-    Auf pushingbox.com gehen und anmelden. Dann auf "My Services" klicken und einen Service "adden". Dann unter "My Scenarios" ein neues Scenario erstellen und über "Add an Action" die Service auswählen über die man Benachrichtigt werden will. Nach dem klick auf "Add an action with this service" erscheint ein Eingabe-Fenster(Formular) mit dem die Nachricht die an den Service verschickt wird definiert werden muss. Durch die integration von Variablen lässt sich diese auch dynamisch gestalten.
+    Auf pushingbox.com gehen und anmelden. Dann auf "My Services" klicken und einen Service "adden". Dann unter "My Scenarios" ein neues Scenario erstellen und über "Add an Action" die Service auswählen über die man Benachrichtigt werden will. Nach dem klick auf "Add an action with this service" erscheint ein Eingabe-Fenster(Formular) mit dem die Nachricht die an den Service verschickt wird definiert werden muss. Durch die integration von Variablen lässt sich diese auch dynamisch gestalten. (Siehe Pushingbox Variablen)
 * config.lua anpassen -> Konfiguration
-* Alle Lua Skripte auf den ESP übertragen und auch bis auf die init.lua und die config.lua komplieren. 
+* Alle Lua Skripte auf den ESP übertragen und auch bis auf die init.lua komplieren. 
 
 
 
