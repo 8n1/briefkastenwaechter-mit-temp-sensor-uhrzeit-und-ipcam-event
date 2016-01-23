@@ -1,6 +1,9 @@
 # nodemcu-briefkastenwaechter
 
 ### Letzte Updates:
+**23.Jan 2016**
+ * ds18b20.lua Modul ersetzt (fix für negative Temperaturen)
+
 **30.Sep 2015**
  * Datum wird zerlegt an Pushingbox übertragen, somit neue Variablen verfügbar($wd,$d$,$m$,$y$)
 
@@ -36,14 +39,11 @@
 
 
 ## Hardware
-Das ganze kann auf mindestens 2 unterschiedliche Arten eingesetzt werden
-1. Minimal Setup - ESP Modul, Schalter, Spannungsregler
-2. Full featured - ESP Modul, Schalter, Spannungsregler mit Enable/Shutdown Pin, ATtiny25/42/85 für das "Power Management", Spannungsteiler, Temperatur Sensor, (Raspberrypi + Apache), (AXIS IP Kamera)
-
-
-## Unterstzütze ESP Module
-1. Minimal Setup - Alle.
-2. Full Featured Setup - ESP-12
+Es gibt 2 Möglichkeiten. 
+* Das minimale Setup - Sehr einfach aufzubauen, aber nicht auf Stromverbrauch Standby optimiert und daher nur bedingt für den Batteriebetrieb geeignet. <br />
+ -> ESP Module: ESP-01,...
+* Full featured/ULtra Low Standby Power Setup - Etwas komplizierter, dafür so gut wie kein Stromverbrauch im Standby. <br />
+ -> ESP Module: bspw. ESP-07, ESP-12(E)
 
 
 ## Geplante Erweiterungen:
@@ -145,8 +145,8 @@ Um weitere Features zu aktivieren müssen diese auf true gesetzt und die zugehö
 ## Installation:
 
 * NodeMCU Firmware flashen
-* Pushingbox Account erstellen, Service adden und Szenario erstellen
-    Auf pushingbox.com gehen und anmelden. Dann auf "My Services" klicken und einen Service "adden". Dann unter "My Scenarios" ein neues Scenario erstellen und über "Add an Action" die Service auswählen über die man Benachrichtigt werden will. Nach dem klick auf "Add an action with this service" erscheint ein Eingabe-Fenster(Formular) mit dem die Nachricht die an den Service verschickt wird definiert werden muss. Durch die integration von Variablen lässt sich diese auch dynamisch gestalten. (Siehe Pushingbox Variablen)
+* Pushingbox Account erstellen, Service adden und Szenario erstellen <br />
+    Auf pushingbox.com gehen und anmelden. Dann auf "My Services" klicken und einen Service "adden". Dann unter "My Scenarios" ein neues Scenario erstellen und über "Add an Action" die Service auswählen über die man Benachrichtigt werden will. Nach dem klick auf "Add an action with this service" erscheint ein Eingabe-Fenster(Formular) mit dem die Nachricht die über den Service verschickt wird definiert werden muss. Durch die integration von Variablen lässt sich diese auch dynamisch gestalten. (Siehe Pushingbox Variablen)
 * config.lua anpassen -> Konfiguration
 * Alle Lua Skripte auf den ESP übertragen und auch bis auf die init.lua komplieren. 
 
